@@ -7,16 +7,16 @@
 
 
 
-public class Noeud extends Barre {
+public class Noeud {
     Double abscisse;                        
     Double ordonnée;
     int typeAppui;                                                          //(1)simple (tranlation tangentielle), (2)double (bloqué en translation), (3)sans appui
     String identificationN;                                                 //nom noeud
 
-    Noeud (Double abs, Double ord, String id, int appui) {
+    Noeud (Double abs, Double ord, String idn, int appui) {
         this.abscisse = abs;
         this.ordonnée = ord;
-        this.identificationN = id;
+        this.identificationN = idn;
         this.typeAppui = appui;
     }
     Noeud () {
