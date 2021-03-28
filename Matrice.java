@@ -11,7 +11,7 @@ public class Matrice {
 		nbEquations = aNbEquations;
 		if (nbEquations >= 12)
 		{
-			throw new IllegalArgumentException("Ca va pas la tete ???");
+			throw new IllegalArgumentException("Trop d'équation");
 		}
 
 		e = new double[nbEquations + 1][nbEquations];
