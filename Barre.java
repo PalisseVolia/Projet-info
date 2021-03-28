@@ -5,8 +5,8 @@ public class Barre {
         int materiau;
         String identificationB;
 
-        Barre (Double noeudd, Double, noeud fin) {
-
+        Barre (Double noeudd, Double noeudf) {
+            test
         }
         Barre () {
             
