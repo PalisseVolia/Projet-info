@@ -1,7 +1,16 @@
+
+//  ============ CLASSE NOEUD ============
+//
+//  Associe des valeurs à un noeud en fonction de ses coordonnées et de son type d'appui (représenté par un int (1)simple, (2)double, (3)sans appui).
+//
+//  ======================================
+
+
+
 public class Noeud extends Barre {
     Double abscisse;                        
     Double ordonnée;
-    int typeAppui;                                                       //simple (tranlation tangentielle), double (bloqué en translation), sans appui => peut etre leur donner un identifiant numérique(1,2,3)
+    int typeAppui;                                                          //(1)simple (tranlation tangentielle), (2)double (bloqué en translation), (3)sans appui
     String identificationN;                                                 //nom noeud
 
     Noeud (Double abs, Double ord, String id, int appui) {
