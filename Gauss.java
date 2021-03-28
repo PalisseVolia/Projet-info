@@ -1,7 +1,6 @@
 
 public class Gauss
 {
-
 	public static void main(String[] args)
 	{
 
@@ -11,5 +10,4 @@ public class Gauss
 		mat.initialize();
 		mat.resolution();
 	}
-
 }
