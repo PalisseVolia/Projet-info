@@ -1,3 +1,12 @@
+
+//  ============ CLASSE BARRE ============
+//
+//  Associe des valeurs à une barre en fonction de deux noeuds et de son materiau (représenté par un int).
+//
+//  ======================================
+
+
+
 public class Barre extends Noeud {
     Noeud noeuddepart;
     Noeud noeudfin;
