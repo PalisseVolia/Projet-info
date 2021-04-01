@@ -27,6 +27,11 @@ public class Barre extends Noeud {
         this.materiau = 0;
     }
 
+    public static String idb(int numb) {
+        String idb = "N" + String.valueOf(numb);
+        return(idb);
+    }
+
     /* TEST     Print Noeud
     Double a = 3.0;
     String nom = "test";
