@@ -3,7 +3,7 @@ public class Treillis {
 	Barre barre_data[];
 	Noeud noeud_data[];
 	
-	public Treillis() {     //constructeur vide 
+	public Treillis() {     //constructeur auto 
 				
 	}
 
