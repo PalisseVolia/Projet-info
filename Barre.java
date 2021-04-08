@@ -1,34 +1,68 @@
-public class Barre extends Noeud {
-    Noeud noeuddepart;
-    Noeud noeudfin;
-    int materiau;
+public class Barre extends Noeud{
+
+    Noeud debut_noeud;
+    Noeud fin_noeud;
+    int materiel;
     String identificationB;
     
-    Barre (Noeud noeudd, Noeud noeudf, String idb, int mat) {
-        this.noeuddepart = noeudd;
-        this.noeudfin = noeudf;
+    
+    Barre (Noeud noeud, Noeud noeuds, String idb, int mat) {
+        this.debut_noeud = noeud;
+        this.fin_noeud = noeud;
         this.identificationB = idb;
-        this.materiau = mat;
+        this.materiel = mat;
     }
     
-    Barre () {
-        this.noeuddepart = new Noeud();
-        this.noeudfin = new Noeud();
-        this.identificationB = "Unidentified";
-        this.materiau = 0;
+    Barre() {
+        this.debut_noeud = new Noeud ();
+        this.fin_noeud = new Noeud ();
+        this.identificationB = "Non_Identifié";
+        this.materiel = 0;
     }
-
-    public static void main(String[] args) {
-
+    
+    public static String idb (int numb) {
+        String idb = "N" + String.valueOf (numb);
+        return (idb);
     }
-
+    
+    public Noeud getDebut_noeud() {
+        return debut_noeud;
+    }
+    
+    public void setDebut_noeud(Noeud debut_noeud) {
+        this.debut_noeud = debut_noeud;
+    }
+    
+    public Noeud getFin_noeud() {
+        return fin_noeud;
+    }
+    
+    public void setFin_noeud(Noeud fin_noeud) {
+        this.fin_noeud = fin_noeud;
+    }
+    
+    public int getMateriel() {
+        return materiel;
+    }
+    
+    public void setMateriel(int materiel) {
+        this.materiel = materiel;
+    }
+    
+    public String getIdentificationB() {
+        return identificationB;
+    }
+    
+    public void setIdentificationB(String identificationB) {
+        this.identificationB = identificationB;
+    }
     
     
-    /* TEST     Print Noeud
+   /* TEST Print Noeud
     Double a = 3.0;
-    String nom = "test";
-    int appui = 1;
-    Noeud test = new Noeud(a,a,nom,appui);
-    System.out.println(test.identificationN + " coords: (" + test.abscisse + "," + test.ordonnée + ") de type " + test.typeAppui);
+    String name = "test";
+    int press = 1;
+    Noeud test = new Noeud (a, a, name, support);
+    System.out.println (test.identificationN + "coords: (" + test.abscisse + "," + test.ordinate + ") of type" + test.typeAppui);
     */
-}
+    }
