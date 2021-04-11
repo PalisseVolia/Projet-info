@@ -1,3 +1,4 @@
+
 /* cette classe barre est l'extension de la classe nœud. Dans cette classe, on créé une barre en prenant le nœud de début et de fin
 
 On créé une barre sur la base des nœuds, on prends d'abord les valeurs des nœuds de l'utilisateur puis en fonction de ces valeurs que nous avons demandées à partir de laquelle chaque barre commence et se termine
@@ -8,6 +9,7 @@ public class Barre extends Noeud{         // variable de classe de barre
     Noeud debut_noeud;
     Noeud fin_noeud;
     int materiel;
+
     String identificationB;
     
     
@@ -24,6 +26,7 @@ public class Barre extends Noeud{         // variable de classe de barre
         this.identificationB = "Non_Identifié";
         this.materiel = 0;
     }
+
     
         
     public Noeud getDebut_noeud() {              //méthodes get et set
