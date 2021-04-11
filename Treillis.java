@@ -25,7 +25,7 @@ public class Treillis {      //variables
 		return noeud_data;
 	}
 
-	public void setNoeud_data(Noeud[] noeud_Data1) {
+	public void setNoeud_data(Noeud[] noeud_Data1) {      //methode qui prend les données des noeuds et définit ces données sur une variable quand la méthode est appelée
 		this.noeud_data = noeud_Data1;
 	}
 	
