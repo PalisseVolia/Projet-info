@@ -1,9 +1,13 @@
+/*
+cette classe est utilisée pour prendre un point pour chaque triangle sur le treillis
+*/
+
 public class Points {
  
 	float i,j;
 	public Points() {     //constructeur auto
 	}
-	public float getI() {
+	public float getI() {         // get et set
 		return i;
 	}
 	public void setI(float i) {

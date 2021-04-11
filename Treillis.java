@@ -1,4 +1,10 @@
-public class Treillis {
+/*
+c'est la classe où est placé le triangle
+le treillis est fait par la classe noeud et barre
+les nœuds se combinent pour former une barre
+*/
+
+public class Treillis {      //variables
 
 	Barre barre_data[];
 	Noeud noeud_data[];
@@ -7,7 +13,7 @@ public class Treillis {
 				
 	}
 
-	public Barre[] getBarre_data() {
+	public Barre[] getBarre_data() {         //get et set
 		return barre_data;
 	}
 

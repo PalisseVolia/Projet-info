@@ -1,4 +1,9 @@
-public class Barre extends Noeud{
+/* cette classe barre est l'extension de la classe nœud. Dans cette classe, on créé une barre en prenant le nœud de début et de fin
+
+On créé une barre sur la base des nœuds, on prends d'abord les valeurs des nœuds de l'utilisateur puis en fonction de ces valeurs que nous avons demandées à partir de laquelle chaque barre commence et se termine
+*/
+
+public class Barre extends Noeud{         // variable de classe de barre
 
     Noeud debut_noeud;
     Noeud fin_noeud;
@@ -6,26 +11,22 @@ public class Barre extends Noeud{
     String identificationB;
     
     
-    Barre (Noeud noeud, Noeud noeuds, String idb, int mat) {
+    Barre (Noeud noeud, Noeud noeuds, String idb, int mat) {     // constructeur avec des variables
         this.debut_noeud = noeud;
         this.fin_noeud = noeud;
         this.identificationB = idb;
         this.materiel = mat;
     }
     
-    Barre() {
+    Barre() {                                     // constructeur simple
         this.debut_noeud = new Noeud ();
         this.fin_noeud = new Noeud ();
         this.identificationB = "Non_Identifié";
         this.materiel = 0;
     }
     
-    public static String idb (int numb) {
-        String idb = "N" + String.valueOf (numb);
-        return (idb);
-    }
-    
-    public Noeud getDebut_noeud() {
+        
+    public Noeud getDebut_noeud() {              //méthodes get et set
         return debut_noeud;
     }
     
@@ -53,7 +54,7 @@ public class Barre extends Noeud{
         return identificationB;
     }
     
-    public void setIdentificationB(String identificationB) {
+    public void setIdentificationB(String identificationB) {            //méthode pour identifier les barres
         this.identificationB = identificationB;
     }
     
