@@ -1,5 +1,8 @@
-// terrain est la classe sur laquelle le treillis est placé 
-//et on prends le point pour le treillis et ces points sont basés sur le terrain
+// =========== CLASSE Terrain ============
+//
+// Ensemble des points délimitant le terrain
+//
+// =======================================
 
 
 public class Terrain {
