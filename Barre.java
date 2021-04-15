@@ -10,6 +10,7 @@ public class Barre extends Noeud{
     Noeud debut_noeud;
     Noeud fin_noeud;
     int materiel;
+
     String identificationB;
     
     
@@ -26,6 +27,7 @@ public class Barre extends Noeud{
         this.identificationB = "Non_Identifié";
         this.materiel = 0;
     }
+
     
         
     public Noeud getDebut_noeud() {                                 //méthodes get et set
