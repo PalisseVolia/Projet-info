@@ -1,3 +1,10 @@
+// ========== CLASSE Treillis ============
+//
+// 
+//
+// =======================================
+
+
 /*
 c'est la classe où est placé le triangle
 le treillis est fait par la classe noeud et barre
