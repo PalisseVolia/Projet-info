@@ -1,13 +1,17 @@
-/*
-cette classe est utilisée pour prendre un point pour chaque triangle sur le treillis
-*/
+// ============ CLASSE Point =============
+//
+// On définit les points délimitant le terrain
+//
+// =======================================
+
 
 public class Points {
  
 	float i,j;
-	public Points() {     //constructeur auto
+	public Points() {     					
 	}
-	public float getI() {         // get et set
+
+	public float getI() {         					//méthodes get et set
 		return i;
 	}
 	public void setI(float i) {
