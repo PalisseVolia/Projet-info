@@ -23,12 +23,14 @@ class FenetreMain extends JFrame implements ActionListener{
         setSize(1500,800);
         
         JPanel pane1 = new JPanel();
+        pane1.setLayout(new BorderLayout());
         noeuds = new JTextArea("");
         noeuds.setPreferredSize(new Dimension(300,200));
         noeuds.setEditable(false);
-        label1 = new JLabel("Noeuds");
-        pane1.add(noeuds);
-        pane1.add(label1);
+        label1 = new JLabel("Noeuds :");
+        label1.setFont(new Font("Arial", Font.PLAIN, 20));
+        pane1.add(noeuds, BorderLayout.SOUTH);
+        pane1.add(label1, BorderLayout.NORTH);
 
         Container contenu = getContentPane();
         contenu.setLayout(new FlowLayout());
