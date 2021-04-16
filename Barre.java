@@ -10,7 +10,6 @@ public class Barre extends Noeud{
     Noeud debut_noeud;
     Noeud fin_noeud;
     int materiel;
-
     String identificationB;
     
     
