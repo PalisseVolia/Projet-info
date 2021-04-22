@@ -14,7 +14,7 @@ public class Fenetre {
 class FenetreMain extends JFrame implements ActionListener{
     private static final long serialVersionUID = 1L;
 
-    private JButton noeud;
+    private JButton noeud, compute;
     private JTextArea noeuds;
     private JLabel label1;
 
@@ -39,8 +39,11 @@ class FenetreMain extends JFrame implements ActionListener{
         JMenuBar bar = new JMenuBar();
         setJMenuBar(bar);
         noeud = new JButton("noeud");
+        compute = new JButton("compute");
         bar.add(noeud);
+        bar.add(compute);
         noeud.addActionListener(this);
+        compute.addActionListener(this);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -49,6 +52,9 @@ class FenetreMain extends JFrame implements ActionListener{
             fen.setVisible(true);
             initNoeuds(fen.getNewajout());
         }  
+        if (e.getSource() == compute) {
+            
+        }
     }
 
     private void initNoeuds(String ajout) {
@@ -61,7 +67,7 @@ class FenetreNoeud extends JDialog implements ActionListener{   //JDialog, comme
 
     private JButton add, close;
     private JTextField abscisse, ordonnee, identification, type;
-    private JLabel label1, label2, label3, label4;
+    private JLabel label1, label2, label3, label4, label5;
     private JTextArea noeuds;
     private Dimension txt;
     private String newajout = "";
@@ -73,6 +79,7 @@ class FenetreNoeud extends JDialog implements ActionListener{   //JDialog, comme
         
         txt = new Dimension(75,24);
         noeuds = new JTextArea("");
+        noeuds.setEditable(false);
         noeuds.setPreferredSize(new Dimension(300,200));
 
         JPanel pane1 = new JPanel();
@@ -113,15 +120,18 @@ class FenetreNoeud extends JDialog implements ActionListener{   //JDialog, comme
 
         JPanel pane5 = new JPanel();
         pane5.setLayout(new FlowLayout());
+        pane5.add(pane4);
+        pane5.add(pane3);
         pane5.add(pane1);
         pane5.add(pane2);
-        pane5.add(pane3);
-        pane5.add(pane4);
 
         JPanel pane6 = new JPanel();
         pane6.setLayout(new BorderLayout());
         add = new JButton("ADD");
         close = new JButton("Close");
+        label5 = new JLabel("  Veuillez entrer des réels pour l'abscisse et l'ordonnée");
+        label5.setFont(new Font("Arial", Font.PLAIN, 15));
+        pane6.add(label5, BorderLayout.CENTER);
         pane6.add(add, BorderLayout.EAST);
         pane6.add(close, BorderLayout.WEST);
         add.addActionListener(this);
@@ -140,7 +150,7 @@ class FenetreNoeud extends JDialog implements ActionListener{   //JDialog, comme
     
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == add) {
-            newajout = newajout + "("+ abscisse.getText() + "," + ordonnee.getText() + ")      " + identification.getText() + "      " + type.getText() + "\n";
+            newajout = newajout + type.getText() + ";" + identification.getText() + ";(" + abscisse.getText() + "," + ordonnee.getText() + ")" + "\n";
             abscisse.setText("");
             ordonnee.setText("");
             identification.setText("");
