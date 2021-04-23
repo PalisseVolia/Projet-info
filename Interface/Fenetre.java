@@ -77,9 +77,10 @@ class FenetreNoeud extends JDialog implements ActionListener{   //JDialog, comme
     private static final long serialVersionUID = 1L;
 
     private JButton add, close;
-    private JTextField abscisse, ordonnee, identification, type;
+    private JTextField abscisse, ordonnee, identification;
     private JLabel label1, label2, label3, label4, label5;
     private JTextArea noeuds;
+    private JComboBox<String> type;
     private Dimension txt;
     private String newajout = "";
 
@@ -122,8 +123,9 @@ class FenetreNoeud extends JDialog implements ActionListener{   //JDialog, comme
 
         JPanel pane4 = new JPanel();
         pane4.setLayout(new BorderLayout());
-        type = new JTextField();
-        type.setPreferredSize(txt);
+        String[] appuis = {"AppuiSimple","AppuiDouble","NoeudSimple"};
+        type = new JComboBox<>(appuis);
+        type.setPreferredSize(new Dimension(100,24));
         label4 = new JLabel("Type");
         label4.setFont(new Font("Arial", Font.PLAIN, 15));
         pane4.add(label4, BorderLayout.NORTH);
@@ -161,11 +163,10 @@ class FenetreNoeud extends JDialog implements ActionListener{   //JDialog, comme
     
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == add) {
-            newajout = newajout + type.getText() + ";" + identification.getText() + ";(" + abscisse.getText() + "," + ordonnee.getText() + ")" + "\n";
+            newajout = newajout + type.getItemAt(type.getSelectedIndex()) + ";" + identification.getText() + ";(" + abscisse.getText() + "," + ordonnee.getText() + ")" + "\n";
             abscisse.setText("");
             ordonnee.setText("");
             identification.setText("");
-            type.setText("");
             noeuds.setText(newajout);
         }
         if (e.getSource() == close) {
