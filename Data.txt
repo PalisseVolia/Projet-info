@@ -1,5 +1,9 @@
+qsdsqdsqdq;dqsdqsdsq
+dsqsqdsqd;dsqdqsdsqd
 NOEUDS
-sqd;dsqsqd;(dsq,sqdqs)
-dsqdsq;dsq;(dsqdsq,dsqdsq)
-dqsdsq;dqs;(dsq,dsqdqs)
-dsqqds;qds;(qssdq,dsqsqd)
+AppuiSimple;d;(1,4)
+AppuiDouble;c;(2,3)
+NoeudSimple;b;(3,2)
+NoeudSimple;a;(4,1)
+FINNOEUDS
+aidaoaozp;sqdpoqdoq
