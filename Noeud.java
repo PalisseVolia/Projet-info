@@ -7,10 +7,10 @@
 
 public class Noeud {
 	
-    Double abscisse;
-    Double ordonnee;
-    int typeSupport;           // (1) appui simple (tangentiel ), (2) appui double (bloqué en translation), (3) noeud simple 
-    String identificationN;    // nom noeud
+    private Double abscisse;
+    private Double ordonnee;
+    private int typeSupport;           // (1) appui simple (tangentiel ), (2) appui double (bloqué en translation), (3) noeud simple 
+    private String identificationN;    // nom noeud
 
     Noeud (Double abs, Double ord, String idn, int support) {    	//constructeur
         this.abscisse = abs;
@@ -48,5 +48,4 @@ public class Noeud {
 	public void setIdentificationN(String identificationN) {
 		this.identificationN = identificationN;
 	}
-    
 }
