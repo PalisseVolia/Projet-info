@@ -94,11 +94,22 @@ class FenetreNoeud extends JDialog implements ActionListener{   //JDialog, comme
     
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == add) {
-            newajout = newajout + type.getItemAt(type.getSelectedIndex()) + ";" + identification.getText() + ";(" + abscisse.getText() + "," + ordonnee.getText() + ")" + "\n";
-            abscisse.setText("");
-            ordonnee.setText("");
-            identification.setText("");
-            noeuds.setText(newajout);
+            boolean doerror = false;
+            try {
+                Double test = Double.parseDouble(abscisse.getText() + Double.parseDouble(ordonnee.getText()));
+                test = test + test;
+            } catch (Exception err) {
+                newajout = newajout + "error : l'abscisse ou l'ordonnée n'est pas un réel"  + "\n";
+                noeuds.setText(newajout);
+                doerror = true;
+            }
+            if (doerror == false) {
+                newajout = newajout + type.getItemAt(type.getSelectedIndex()) + ";" + identification.getText() + ";(" + abscisse.getText() + "," + ordonnee.getText() + ")" + "\n";
+                abscisse.setText("");
+                ordonnee.setText("");
+                identification.setText("");
+                noeuds.setText(newajout);
+            }
         }
         if (e.getSource() == close) {
             dispose();
