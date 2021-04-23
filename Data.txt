@@ -1,0 +1,5 @@
+NOEUDS
+sqd;dsqsqd;(dsq,sqdqs)
+dsqdsq;dsq;(dsqdsq,dsqdsq)
+dqsdsq;dqs;(dsq,dsqdqs)
+dsqqds;qds;(qssdq,dsqsqd)

@@ -3,6 +3,9 @@ package Interface;
 import javax.swing.* ;
 import java.awt.* ;
 import java.awt.event.* ;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 
 public class Fenetre {
     public static void main(String[] args) {
@@ -53,7 +56,15 @@ class FenetreMain extends JFrame implements ActionListener{
             initNoeuds(fen.getNewajout());
         }  
         if (e.getSource() == compute) {
-            
+            try {
+                File dataf = new File("Data.txt");
+                dataf.delete();
+                BufferedWriter data = new BufferedWriter(new FileWriter("Data.txt",true));
+                data.write("NOEUDS" + "\n" + noeuds.getText() + "\n" + "FINNOEUDS");
+                data.close();
+            } catch (Exception err) {
+                System.out.println("Erreur :\n"+err);
+            }
         }
     }
 
