@@ -1,9 +1,8 @@
-qsdsqdsqdq;dqsdqsdsq
-dsqsqdsqd;dsqdqsdsqd
 NOEUDS
-AppuiSimple;d;(1,4)
-AppuiDouble;c;(2,3)
-NoeudSimple;b;(3,2)
-NoeudSimple;a;(4,1)
-FINNOEUDS
-aidaoaozp;sqdpoqdoq
+AppuiSimple;qsd;(12,312)
+AppuiDouble;pi;(12,123)
+NoeudSimple;fhlkj;(53,45)
+FINNOEUDSBARRES
+fds;Pleine;test1;test2
+fqsdf;En I;test2;test1
+FINBARRES

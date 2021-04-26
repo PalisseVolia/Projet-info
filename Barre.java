@@ -9,7 +9,7 @@ public class Barre extends Noeud{
 
     Noeud debut_noeud;
     Noeud fin_noeud;
-    int materiel;
+    int type;
     String identificationB;
     
     
@@ -17,14 +17,14 @@ public class Barre extends Noeud{
         this.debut_noeud = noeud;
         this.fin_noeud = noeud;
         this.identificationB = idb;
-        this.materiel = mat;
+        this.type = mat;
     }
     
     Barre() {                                                       //constructeur par défaut
         this.debut_noeud = new Noeud ();
         this.fin_noeud = new Noeud ();
         this.identificationB = "Non_Identifié";
-        this.materiel = 0;
+        this.type = 0;
     }
 
     
@@ -45,12 +45,12 @@ public class Barre extends Noeud{
         this.fin_noeud = fin_noeud;
     }
     
-    public int getMateriel() {
-        return materiel;
+    public int gettype() {
+        return type;
     }
     
-    public void setMateriel(int materiel) {
-        this.materiel = materiel;
+    public void settype(int type) {
+        this.type = type;
     }
     
     public String getIdentificationB() {
