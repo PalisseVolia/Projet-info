@@ -36,7 +36,7 @@ public class FenetreBarre extends JDialog implements ActionListener {
 
         JPanel pane2 = new JPanel();
         pane2.setLayout(new BorderLayout());
-        String[] section = {"Pleine","En I"};
+        String[] section = {"Pleine","EnI"};
         type = new JComboBox<>(section);
         type.setPreferredSize(box);
         label2 = new JLabel("Section");

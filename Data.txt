@@ -1,8 +1,12 @@
+efdsqsqd;dfsqdsdsf;sqddsf;sqdfdsqf
 NOEUDS
-AppuiSimple;qsd;(12,312)
-AppuiDouble;pi;(12,123)
-NoeudSimple;fhlkj;(53,45)
-FINNOEUDSBARRES
-fds;Pleine;test1;test2
-fqsdf;En I;test2;test1
+AppuiSimple;N1;(1,2)
+AppuiDouble;N2;(3,4)
+NoeudSimple;N3;(5,6)
+FINNOEUDS
+dqfsqdsfsqfd;dsqfdsqfsq;dfqsdf;sdqfdf
+BARRES
+B1;Pleine;N1;N2
+B2;EnI;N3;N1
 FINBARRES
+dfqsfdsqf;dsqdfqsdfsq;fdsqfdqs

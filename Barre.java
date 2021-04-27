@@ -1,6 +1,6 @@
 // ============ CLASSE Barre =============
 //
-//Extension de la classe Noeud, on crée une barre avec deux noeuds (début et fin), un materiau et une identification
+//Extension de la classe Noeud, on crée une barre avec deux noeuds (début et fin), un type (1 = Pleine, 2 = en I) et une identification
 //
 // =======================================
 
@@ -13,11 +13,11 @@ public class Barre extends Noeud{
     String identificationB;
     
     
-    Barre (Noeud noeud, Noeud noeuds, String idb, int mat) {        //constructeur
-        this.debut_noeud = noeud;
-        this.fin_noeud = noeud;
+    Barre (Noeud noeud1, Noeud noeud2, String idb, int type) {        //constructeur
+        this.debut_noeud = noeud1;
+        this.fin_noeud = noeud2;
         this.identificationB = idb;
-        this.type = mat;
+        this.type = type;
     }
     
     Barre() {                                                       //constructeur par défaut

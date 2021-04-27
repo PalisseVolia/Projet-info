@@ -19,8 +19,7 @@ public class LNoeud {
             String line;
             String[] mot,coord;
             Boolean dogetdata = false;
-            int type = 0;
-            int k = 0;
+            int type = 0,k = 0;
             while ((line=data.readLine()) != null) {                                                                        //tant qu'il n'est pas arrivé à la fin du fichier, récupère la ligne
                 if (line.equals("FINNOEUDS")) {                                                                             //si à la fi nde la section noeud, arrete de récupérer les valeurs
                     dogetdata = false;
