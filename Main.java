@@ -7,5 +7,8 @@ public class Main {
         // LBarre lbarre = new LBarre();
         // System.out.println(lbarre.getlisteBarre(1).getFin_noeud().getIdentificationN());
         // System.out.println(lbarre.getListeNoeuds());
+        // LTriangle ltriangle = new LTriangle();
+        // System.out.println(ltriangle.getListeTriangles(0).getOrdonneeT2());
+        // System.out.println(ltriangle.getListeTriangles());
     }
 }
