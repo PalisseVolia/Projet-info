@@ -52,6 +52,16 @@ public class LNoeud {
         }
     }
 
+    // public static int Appui(Noeud[] LNoeud, int nbnoeuds) {
+    //     LTriangle tri = new LTriangle();
+    //     for (int i = 0; i < nbnoeuds; i++) {
+    //         for (int j = 0; j < tri.getListeTriangles(); j++) {
+                
+    //         }
+    //     }
+    //     return(1);
+    // }
+
     public Noeud getListeNoeuds(int i) {                                                                                    //méthode get d'un des noeuds du tableau
         return this.listenoeuds[i];
     }
