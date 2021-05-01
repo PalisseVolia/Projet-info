@@ -1,3 +1,4 @@
+package exemples;
 
 public class Gauss
 {
