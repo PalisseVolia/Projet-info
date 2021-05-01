@@ -96,7 +96,7 @@ class FenetreNoeud extends JDialog implements ActionListener{   //JDialog, comme
         if (e.getSource() == add) {
             boolean doerror = false;
             try {
-                Double test = Double.parseDouble(abscisse.getText() + Double.parseDouble(ordonnee.getText()));
+                Double test = Double.parseDouble(abscisse.getText()) + Double.parseDouble(ordonnee.getText());
                 test = test + test;
             } catch (Exception err) {
                 newajout = newajout + "error : l'abscisse ou l'ordonnée n'est pas un réel"  + "\n";
@@ -109,7 +109,7 @@ class FenetreNoeud extends JDialog implements ActionListener{   //JDialog, comme
                 doerror = true;
             }
             if (doerror == false) {
-                newajout = newajout + /*type.getItemAt(type.getSelectedIndex())*/ "NoeudSimple" + ";" + identification.getText() + ";(" + abscisse.getText() + "," + ordonnee.getText() + ")" + "\n";
+                newajout = newajout + /*type.getItemAt(type.getSelectedIndex())*/ "Type" + ";" + identification.getText() + ";(" + abscisse.getText() + "," + ordonnee.getText() + ")" + "\n";
                 abscisse.setText("");
                 ordonnee.setText("");
                 identification.setText("");

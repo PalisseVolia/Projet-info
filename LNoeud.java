@@ -19,48 +19,92 @@ public class LNoeud {
             String line;
             String[] mot,coord;
             Boolean dogetdata = false;
-            int type = 0,k = 0;
+            int k = 0;
             while ((line=data.readLine()) != null) {                                                                        //tant qu'il n'est pas arrivé à la fin du fichier, récupère la ligne
-                if (line.equals("FINNOEUDS")) {                                                                             //si à la fi nde la section noeud, arrete de récupérer les valeurs
+                if (line.equals("FINNOEUDS")) {                                                                             //si à la fin de la section noeud, arrete de récupérer les valeurs
                     dogetdata = false;
                 }
                 if (dogetdata == true) {                                                                                    //si dans la section noeuds
                     mot = line.split(";");
                     mot[2] = mot[2].replace("(","").replace(")", "");
                     coord = mot[2].split(",");
-                    if (mot[0].equals("NoeudSimple")) {                                                                     //assigne un int en fonction du type d'appui
-                        type = 3;
-                    }
-                    if (mot[0].equals("AppuiDouble")) {
-                        type = 2;
-                    }
-                    if (mot[0].equals("AppuiSimple")) {
-                        type = 3;
-                    }
-                    lNoeuds[k] = new Noeud(Double.parseDouble(coord[0]), Double.parseDouble(coord[1]), mot[1], type);       //remplis un tableau avec les noeuds du treillis
+                    lNoeuds[k] = new Noeud(Double.parseDouble(coord[0]), Double.parseDouble(coord[1]), mot[1], 3);          //remplis un tableau avec les noeuds du treillis
                     k = k+1;
+                    Appui(lNoeuds, nbnoeuds);                                                                               //détermine les différents types d'appuis en fonction de la position des noeuds dans le terrain
                     this.nbnoeuds = k;                                                                                      //actualise le nombre total de noeuds
                 }
-                if (line.equals("NOEUDS")) {
+                if (line.equals("NOEUDS")) {                                                                                //si début de la section noeud commence a récupérer des valeurs
                     dogetdata = true;
                 }
             }
-            this.listenoeuds = lNoeuds;
-            data.close();
+            this.listenoeuds = lNoeuds;                                                                                     
+            data.close();                                                                                                   //fermeture du BufferredReader
         } catch (Exception err) {
             System.out.println(" Erreur :\n "+err);
         }
     }
 
-    // public static int Appui(Noeud[] LNoeud, int nbnoeuds) {
-    //     LTriangle tri = new LTriangle();
-    //     for (int i = 0; i < nbnoeuds; i++) {
-    //         for (int j = 0; j < tri.getListeTriangles(); j++) {
-                
-    //         }
-    //     }
-    //     return(1);
-    // }
+    public static void Appui(Noeud[] lNoeud, int nbnoeuds) {                                                                //méthode de détermination des types d'appuis
+        LTriangle tri = new LTriangle();                                                                                    //importation de la liste des triangles
+        int nbtriangles = tri.getListeTriangles();                                                                          //get nombre de triangles de la liste
+        for (int i = 0; i < nbnoeuds; i++) {                                                                                //pour chaque noeud
+            if (lNoeud[i].getTypeSupport() == 3) {
+                Double abscheck = lNoeud[i].getabscisse();                                                                  //abscisse du noeud a checker
+                Double ordcheck = lNoeud[i].getordonnee();                                                                  //ordonnée du noeud a checker
+                int j = 0;
+                boolean found = false;                                                                                      //indicateur de résultat
+                while ((j < nbtriangles)&&(found != true)) {                                                                //pour chaque triangles et tant qu'on n'a pas trouvé de résultat
+                    Triangle ctri = tri.getListeTriangles(j);
+                    Double[] equa = new Double[3];                                                                          //tableau contenant les coefficiants a, b et c d'un équation paramétrique de droite ax+by+c=0
+                    equa[0] = -(ctri.getAbscisseT2()-ctri.getAbscisseT1());                                                 //b
+                    equa[1] = ctri.getOrdonneeT2()-ctri.getOrdonneeT1();                                                    //a
+                    equa[2] = -(equa[1]*ctri.getAbscisseT1() + equa[0]*ctri.getOrdonneeT1());                               //c
+                    Double pt = equa[1]*ctri.getAbscisseT3() + equa[0]*ctri.getOrdonneeT3() + equa[2];                      //ax+by+c pour le troisième point du triangle
+                    Double ptcheck = equa[1]*abscheck + equa[0]*ordcheck + equa[2];                                         //ax+by+c pour les coordonnées du noeud
+                    if ((ptcheck < 0.001)&&(ptcheck > -0.001)) {                                                            //si le noeud appartiens au coté 1 à 0.002 près
+                        if (((abscheck-ctri.getAbscisseT1())*(abscheck-ctri.getAbscisseT2()) + (ordcheck-ctri.getOrdonneeT1())*(ordcheck-ctri.getOrdonneeT2())) <= 0) {
+                            lNoeud[i].setTypeSupport(1);                                                                    //le type du noeud est appui simple
+                            found = true;                                                                                   //la solution est trouvée
+                        }
+                    }
+                    if ((((pt>0)&&(ptcheck>0))||((pt<0)&&(ptcheck<0)))&&(found == false)) {                                 //si pt et ptcheck sont de meme signe les deux points sont du meme coté de la droite 1
+                        equa[0] = -(ctri.getAbscisseT3()-ctri.getAbscisseT2());                                             //comme au dessus mais pour la prochaine droite
+                        equa[1] = ctri.getOrdonneeT3()-ctri.getOrdonneeT2();
+                        equa[2] = -(equa[1]*ctri.getAbscisseT2() + equa[0]*ctri.getOrdonneeT2());
+                        pt = equa[1]*ctri.getAbscisseT1() + equa[0]*ctri.getOrdonneeT1() + equa[2];
+                        ptcheck = equa[1]*abscheck + equa[0]*ordcheck + equa[2];
+                        if ((ptcheck < 0.001)&&(ptcheck > -0.001)) {                                                        //si le noeud appartiens au coté 2 à 0.002 près
+                            if (((abscheck-ctri.getAbscisseT2())*(abscheck-ctri.getAbscisseT3()) + (ordcheck-ctri.getOrdonneeT2())*(ordcheck-ctri.getOrdonneeT3())) <= 0) {
+                                lNoeud[i].setTypeSupport(1);                                                                //le type du noeud est appui simple
+                                found = true;
+                            }
+                        }
+                        if ((((pt>0)&&(ptcheck>0))||((pt<0)&&(ptcheck<0)))&&(found == false)) {                             //si pt et ptcheck sont de meme signe les deux points sont du meme coté de la droite 2
+                            equa[0] = -(ctri.getAbscisseT1()-ctri.getAbscisseT3());                                         //comme au dessus mais pour la prochaine droite
+                            equa[1] = ctri.getOrdonneeT1()-ctri.getOrdonneeT3();
+                            equa[2] = -(equa[1]*ctri.getAbscisseT3() + equa[0]*ctri.getOrdonneeT3());
+                            pt = equa[1]*ctri.getAbscisseT2() + equa[0]*ctri.getOrdonneeT2() + equa[2];
+                            ptcheck = equa[1]*abscheck + equa[0]*ordcheck + equa[2];
+                            if ((ptcheck < 0.001)&&(ptcheck > -0.001)) {                                                    //si le noeud appartiens au coté 3 à 0.002 près
+                                if (((abscheck-ctri.getAbscisseT3())*(abscheck-ctri.getAbscisseT1()) + (ordcheck-ctri.getOrdonneeT3())*(ordcheck-ctri.getOrdonneeT1())) <= 0) {
+                                    lNoeud[i].setTypeSupport(1);                                                            //le type du noeud est appui simple
+                                    found = true;
+                                }
+                            }
+                            if ((((pt>0)&&(ptcheck>0))||((pt<0)&&(ptcheck<0)))&&(found == false)) {                         //si pt et ptcheck sont de meme signe les deux points sont du meme coté de la droite 3
+                                lNoeud[i].setTypeSupport(2);                                                                //le type du noeud est appui double
+                                found = true;
+                            }
+                        }
+                    }
+                    if (found == false) {                                                                                   //si le noeud n'appartiens ni a un coté de triangle ni à un triangle
+                        lNoeud[i].setTypeSupport(3);                                                                        //le type du noeud est noeud simple
+                    }
+                    j++;                                                                                                    //incrément de triangle
+                }
+            }
+        }
+    }
 
     public Noeud getListeNoeuds(int i) {                                                                                    //méthode get d'un des noeuds du tableau
         return this.listenoeuds[i];

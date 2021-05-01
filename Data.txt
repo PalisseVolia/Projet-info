@@ -1,5 +1,12 @@
 TRIANGLES
+T1;(1,1);(1,2);(2,2)
+T2;(3,2);(2,4);(4,3)
 FINTRIANGLES
 NOEUDS
-NoeudSimple;qsd;(1,2)
+Type;N1;(1.5,1.5)
+Type;N2;(1.25,1.5)
+Type;N3;(2.5,3)
+Type;N4;(1.5,3)
 FINNOEUDS
+BARRES
+FINBARRES

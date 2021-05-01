@@ -1,13 +1,20 @@
+// =========== CLASSE Triangle ============
+//
+// On définit les triangles délimitant le terrain
+//
+// ========================================
+
+
 public class Triangle {
-    private String identificationT;
-    private Double abscisseT1;
+    private String identificationT;                                                                             //identifiant du triangle
+    private Double abscisseT1;                                                                                  //abscisses de ses trois sommets
     private Double abscisseT2;
     private Double abscisseT3;
-    private Double ordonneeT1;
+    private Double ordonneeT1;                                                                                  //ordonnées de ses trois sommets
     private Double ordonneeT2;
     private Double ordonneeT3;
 
-    Triangle (String id, Double abs1, Double abs2, Double abs3, Double ord1, Double ord2, Double ord3) {
+    Triangle (String id, Double abs1, Double abs2, Double abs3, Double ord1, Double ord2, Double ord3) {        //constructeur
         this.identificationT = id;
         this.abscisseT1 = abs1;
         this.abscisseT2 = abs2;
@@ -16,7 +23,7 @@ public class Triangle {
         this.ordonneeT2 = ord2;
         this.ordonneeT3 = ord3;
     }
-    Triangle () {
+    Triangle () {                                                                                               //constructeur par défaut
         this.identificationT = "Non_Identifié";
         this.abscisseT1 = 0.0;
         this.abscisseT2 = 0.0;
@@ -25,7 +32,7 @@ public class Triangle {
         this.ordonneeT2 = 0.0;
         this.ordonneeT3 = 0.0;
     }
-    public Double getOrdonneeT3() {
+    public Double getOrdonneeT3() {                                                                             //méthodes get et set
         return ordonneeT3;
     }
     public void setOrdonneeT3(Double ordonneeT3) {
