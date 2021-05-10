@@ -1,3 +1,4 @@
+package Treillis;
 // ============ CLASSE Noeud =============
 //
 // On associe des valeurs à un nœud en fonction de ses coordonnées et de son type de support (simple, double, encastré).

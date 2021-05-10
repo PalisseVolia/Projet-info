@@ -1,3 +1,4 @@
+package Treillis;
 // =========== CLASSE LNoeud ============
 //
 // Récupère les valeurs des noeuds dans le fichier de donnée et les transforme en noeuds placés dans un tableau
@@ -7,6 +8,9 @@
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+
+import Terrain.LTriangle;
+import Terrain.Triangle;
 
 public class LNoeud {
     private Noeud[] listenoeuds;                                                                                            //argument -> tableau de tous les noeuds du treillis

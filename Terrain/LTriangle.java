@@ -1,3 +1,4 @@
+package Terrain;
 // ========== CLASSE LTriangle ===========
 //
 // Récupère les valeurs des triangles dans le fichier de donnée et les transforme en triangles placés dans un tableau

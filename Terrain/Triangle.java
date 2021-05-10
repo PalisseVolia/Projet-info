@@ -1,3 +1,4 @@
+package Terrain;
 // =========== CLASSE Triangle ============
 //
 // On définit les triangles délimitant le terrain

@@ -1,3 +1,5 @@
+import Treillis.LNoeud;
+
 public class Main {
     public static void main(String[] args) {
         // récupérer des informations sur tous les noeuds depuis la liste/le nb de noeuds:

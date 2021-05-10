@@ -1,3 +1,4 @@
+package Treillis;
 // ============ CLASSE Barre =============
 //
 //Extension de la classe Noeud, on crée une barre avec deux noeuds (début et fin), un type (1 = Pleine, 2 = en I) et une identification

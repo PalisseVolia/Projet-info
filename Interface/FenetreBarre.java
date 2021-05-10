@@ -3,6 +3,7 @@ package Interface;
 import javax.swing.* ;
 import java.awt.* ;
 import java.awt.event.* ;
+import Treillis.LNoeud;
 
 public class FenetreBarre extends JDialog implements ActionListener {
 
@@ -46,7 +47,11 @@ public class FenetreBarre extends JDialog implements ActionListener {
 
         JPanel pane3 = new JPanel();
         pane3.setLayout(new BorderLayout());
-        String[] noeuds = {"test1","test2"};
+        LNoeud lnoeud = new LNoeud();
+        String[] noeuds = new String[lnoeud.getlisteNoeuds()];
+        for (int i = 0; i < lnoeud.getlisteNoeuds(); i++) {
+            noeuds[i] = lnoeud.getListeNoeuds(i).getIdentificationN();
+        }
         noeud1 = new JComboBox<>(noeuds);
         noeud1.setPreferredSize(box);
         label3 = new JLabel("Noeud 1");
