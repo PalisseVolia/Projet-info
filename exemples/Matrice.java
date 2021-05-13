@@ -1,3 +1,4 @@
+package exemples;
 public class Matrice {
 	private final int nbEquations; // n lignes
 	//	private int m ; //m colonnes

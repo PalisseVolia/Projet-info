@@ -1,6 +1,7 @@
+package Treillis;
 // ============ CLASSE Barre =============
 //
-//Extension de la classe Noeud, on crée une barre avec deux noeuds (début et fin), un materiau et une identification
+//Extension de la classe Noeud, on crée une barre avec deux noeuds (début et fin), un type (1 = Pleine, 2 = en I) et une identification
 //
 // =======================================
 
@@ -9,22 +10,22 @@ public class Barre extends Noeud{
 
     Noeud debut_noeud;
     Noeud fin_noeud;
-    int materiel;
+    int type;
     String identificationB;
     
     
-    Barre (Noeud noeud, Noeud noeuds, String idb, int mat) {        //constructeur
-        this.debut_noeud = noeud;
-        this.fin_noeud = noeud;
+    Barre (Noeud noeud1, Noeud noeud2, String idb, int type) {        //constructeur
+        this.debut_noeud = noeud1;
+        this.fin_noeud = noeud2;
         this.identificationB = idb;
-        this.materiel = mat;
+        this.type = type;
     }
     
     Barre() {                                                       //constructeur par défaut
         this.debut_noeud = new Noeud ();
         this.fin_noeud = new Noeud ();
         this.identificationB = "Non_Identifié";
-        this.materiel = 0;
+        this.type = 0;
     }
 
     
@@ -45,12 +46,12 @@ public class Barre extends Noeud{
         this.fin_noeud = fin_noeud;
     }
     
-    public int getMateriel() {
-        return materiel;
+    public int gettype() {
+        return type;
     }
     
-    public void setMateriel(int materiel) {
-        this.materiel = materiel;
+    public void settype(int type) {
+        this.type = type;
     }
     
     public String getIdentificationB() {
