@@ -10,7 +10,7 @@ public class Noeud {
 	
     private Double abscisse;
     private Double ordonnee;
-    private int typeSupport;           // (1) appui simple (tangentiel ), (2) appui double (bloqué en translation), (3) noeud simple 
+    private int typeSupport;           // (1) appui simple (tangentiel ), (2) appui double (bloqué en translation), (3) noeud simple, (4) appui, (5) impossible
     private String identificationN;    // nom noeud
 
     Noeud (Double abs, Double ord, String idn, int support) {    	//constructeur

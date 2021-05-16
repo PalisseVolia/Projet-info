@@ -67,7 +67,7 @@ public class LNoeud {
                     Double ptcheck = equa[1]*abscheck + equa[0]*ordcheck + equa[2];                                         //ax+by+c pour les coordonnées du noeud
                     if ((ptcheck < 0.001)&&(ptcheck > -0.001)) {                                                            //si le noeud appartiens au coté 1 à 0.002 près
                         if (((abscheck-ctri.getAbscisseT1())*(abscheck-ctri.getAbscisseT2()) + (ordcheck-ctri.getOrdonneeT1())*(ordcheck-ctri.getOrdonneeT2())) <= 0) {
-                            lNoeud[i].setTypeSupport(1);                                                                    //le type du noeud est appui simple
+                            lNoeud[i].setTypeSupport(4);                                                                    //le noeud est un appui dont le type n'a pas encore été déterminé
                             found = true;                                                                                   //la solution est trouvée
                         }
                     }
@@ -79,7 +79,7 @@ public class LNoeud {
                         ptcheck = equa[1]*abscheck + equa[0]*ordcheck + equa[2];
                         if ((ptcheck < 0.001)&&(ptcheck > -0.001)) {                                                        //si le noeud appartiens au coté 2 à 0.002 près
                             if (((abscheck-ctri.getAbscisseT2())*(abscheck-ctri.getAbscisseT3()) + (ordcheck-ctri.getOrdonneeT2())*(ordcheck-ctri.getOrdonneeT3())) <= 0) {
-                                lNoeud[i].setTypeSupport(1);                                                                //le type du noeud est appui simple
+                                lNoeud[i].setTypeSupport(4);                                                                //le noeud est un appui dont le type n'a pas encore été déterminé
                                 found = true;
                             }
                         }
@@ -91,12 +91,12 @@ public class LNoeud {
                             ptcheck = equa[1]*abscheck + equa[0]*ordcheck + equa[2];
                             if ((ptcheck < 0.001)&&(ptcheck > -0.001)) {                                                    //si le noeud appartiens au coté 3 à 0.002 près
                                 if (((abscheck-ctri.getAbscisseT3())*(abscheck-ctri.getAbscisseT1()) + (ordcheck-ctri.getOrdonneeT3())*(ordcheck-ctri.getOrdonneeT1())) <= 0) {
-                                    lNoeud[i].setTypeSupport(1);                                                            //le type du noeud est appui simple
+                                    lNoeud[i].setTypeSupport(4);                                                            //le noeud est un appui dont le type n'a pas encore été déterminé
                                     found = true;
                                 }
                             }
                             if ((((pt>0)&&(ptcheck>0))||((pt<0)&&(ptcheck<0)))&&(found == false)) {                         //si pt et ptcheck sont de meme signe les deux points sont du meme coté de la droite 3
-                                lNoeud[i].setTypeSupport(2);                                                                //le type du noeud est appui double
+                                lNoeud[i].setTypeSupport(5);                                                                //le noeud est dans le triangle terrain, il est donc invalide
                                 found = true;
                             }
                         }
