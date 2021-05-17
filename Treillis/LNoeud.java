@@ -116,5 +116,5 @@ public class LNoeud {
     public int getlisteNoeuds() {                                                                                           //méthode get du nombre de noeuds du tableau
         return this.nbnoeuds;
     }
-
+    //TODO: set identifiant correspondant au coté du triangle sur lequel est l'appui
 }

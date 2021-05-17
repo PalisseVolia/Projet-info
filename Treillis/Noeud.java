@@ -12,7 +12,7 @@ public class Noeud {
     private Double ordonnee;
     private int typeSupport;           // (1) appui simple (tangentiel ), (2) appui double (bloqué en translation), (3) noeud simple 
     private String identificationN;    // nom noeud
-
+	//TODO: ajouter un nvx arg pour le coté du triangle sur lequel est l'appui
     Noeud (Double abs, Double ord, String idn, int support) {    	//constructeur
         this.abscisse = abs;
         this.ordonnee = ord;
