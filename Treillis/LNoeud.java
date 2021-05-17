@@ -50,7 +50,7 @@ public class LNoeud {
     public static void Appui(Noeud[] lNoeud, int nbnoeuds) {                                                                //méthode de détermination des types d'appuis
         LTriangle tri = new LTriangle();                                                                                    //importation de la liste des triangles
         int nbtriangles = tri.getListeTriangles();                                                                          //get nombre de triangles de la liste
-        for (int i = 0; i < nbnoeuds; i++) {                                                                                //pour chaque noeud
+        for (int i = 0; i < nbnoeuds+1; i++) {                                                                                //pour chaque noeud
             if (lNoeud[i].getTypeSupport() == 3) {
                 Double abscheck = lNoeud[i].getabscisse();                                                                  //abscisse du noeud a checker
                 Double ordcheck = lNoeud[i].getordonnee();                                                                  //ordonnée du noeud a checker
@@ -67,8 +67,8 @@ public class LNoeud {
                     if ((ptcheck < 0.001)&&(ptcheck > -0.001)) {                                                            //si le noeud appartiens au coté 1 à 0.002 près
                         if (((abscheck-ctri.getAbscisseT1())*(abscheck-ctri.getAbscisseT2()) + (ordcheck-ctri.getOrdonneeT1())*(ordcheck-ctri.getOrdonneeT2())) <= 0) {
                             lNoeud[i].setTypeSupport(4);                                                                    //le noeud est un appui dont le type n'a pas encore été déterminé
-                            lNoeud[i].settriangleappui(j);                                                                  //le neoud s'appuie sur le triangle N°J
-                            lNoeud[i].settrianglecote(1);                                                                   //le neoud s'appuie sur le coté N°1
+                            lNoeud[i].settriangleappui(j);                                                                  //le noeud s'appuie sur le triangle N°J
+                            lNoeud[i].settrianglecote(1);                                                                   //le noeud s'appuie sur le coté N°1
                             found = true;                                                                                   //la solution est trouvée
                         }
                     }
@@ -81,8 +81,8 @@ public class LNoeud {
                         if ((ptcheck < 0.001)&&(ptcheck > -0.001)) {                                                        //si le noeud appartiens au coté 2 à 0.002 près
                             if (((abscheck-ctri.getAbscisseT2())*(abscheck-ctri.getAbscisseT3()) + (ordcheck-ctri.getOrdonneeT2())*(ordcheck-ctri.getOrdonneeT3())) <= 0) {
                                 lNoeud[i].setTypeSupport(4);                                                                //le noeud est un appui dont le type n'a pas encore été déterminé
-                                lNoeud[i].settriangleappui(j);                                                                  //le neoud s'appuie sur le triangle N°J
-                                lNoeud[i].settrianglecote(2);                                                                   //le neoud s'appuie sur le coté N°2
+                                lNoeud[i].settriangleappui(j);                                                                  //le noeud s'appuie sur le triangle N°J
+                                lNoeud[i].settrianglecote(2);                                                                   //le noeud s'appuie sur le coté N°2
                                 found = true;
                             }
                         }
@@ -95,8 +95,8 @@ public class LNoeud {
                             if ((ptcheck < 0.001)&&(ptcheck > -0.001)) {                                                    //si le noeud appartiens au coté 3 à 0.002 près
                                 if (((abscheck-ctri.getAbscisseT3())*(abscheck-ctri.getAbscisseT1()) + (ordcheck-ctri.getOrdonneeT3())*(ordcheck-ctri.getOrdonneeT1())) <= 0) {
                                     lNoeud[i].setTypeSupport(4);                                                            //le noeud est un appui dont le type n'a pas encore été déterminé
-                                    lNoeud[i].settriangleappui(j);                                                                  //le neoud s'appuie sur le triangle N°J
-                                    lNoeud[i].settrianglecote(3);                                                                   //le neoud s'appuie sur le coté N°3
+                                    lNoeud[i].settriangleappui(j);                                                                  //le noeud s'appuie sur le triangle N°J
+                                    lNoeud[i].settrianglecote(3);                                                                   //le noeud s'appuie sur le coté N°3
                                     found = true;
                                 }
                             }

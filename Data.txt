@@ -3,12 +3,7 @@ T1;(1,1);(1,2);(2,2)
 T2;(3,2);(2,4);(4,3)
 FINTRIANGLES
 NOEUDS
-Type;N1;(1.5,1.5)
-Type;N2;(1.25,1.5)
-Type;N3;(2.5,3)
-Type;N4;(1.5,3)
+Appui;N1;(1.5,1.5)
+Appui;N3;(2.5,3)
+NoeudSimple;N5;(1.5,3)
 FINNOEUDS
-BARRES
-B1;Pleine;N1;N2
-B2;EnI;N3;N1
-FINBARRES

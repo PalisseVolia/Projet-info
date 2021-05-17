@@ -1,10 +1,13 @@
 package Interface;
 
 import javax.swing.* ;
+import FileFormat.Actualisenoeud;
 import java.awt.* ;
 import java.awt.event.* ;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 
 class FenetreMain extends JFrame implements ActionListener{
@@ -81,9 +84,28 @@ class FenetreMain extends JFrame implements ActionListener{
             noeud.setVisible(false);
             barre.setVisible(true);
             try {
-                BufferedWriter data = new BufferedWriter(new FileWriter("Data.txt",true));
-                data.write("NOEUDS" + "\n" + noeuds.getText() + "FINNOEUDS" + "\n");
-                data.close();
+                BufferedWriter dataw = new BufferedWriter(new FileWriter("Data.txt",true));
+                dataw.write("NOEUDS" + "\n" + noeuds.getText() + "FINNOEUDS" + "\n");
+                dataw.close();
+                Actualisenoeud actualise = new Actualisenoeud();
+                actualise.Appui();
+                BufferedReader datar = new BufferedReader(new FileReader("Data.txt"));
+                String line;
+                boolean dogetdata = false;
+                noeuds.setText("");
+                while ((line = datar.readLine()) != null) {
+                    if (line.equals("FINNOEUDS")) {
+                        dogetdata = false;
+                    }
+                    if (dogetdata == true) {
+                        noeuds.setText(noeuds.getText().concat(line) + "\n");
+                    }
+                    if (line.equals("NOEUDS")) {
+                        dogetdata = true;
+                    }
+                }
+                datar.close();
+                
             } catch (Exception err) {
                 System.out.println("Erreur :\n"+err);
             }
@@ -137,7 +159,6 @@ class FenetreMain extends JFrame implements ActionListener{
         ajout = ajout.replace("error : l'abscisse ou l'ordonnée n'est pas un réel"+"\n", "");
         ajout = ajout.replace("error : veuillez entrer un identifiant de noeud"+"\n", "");
         noeuds.setText(noeuds.getText().concat(ajout));
-        //TODO: actualisation du type de noeuds après changement dans le fichier txt (auto ou manuel)
     }
     private void initBarres(String ajout) {
         ajout = ajout.replace("error : deux noeuds similaires sélectionnés"+"\n", "");
