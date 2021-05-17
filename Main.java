@@ -1,16 +1,15 @@
-import Treillis.LNoeud;
 
 public class Main {
     public static void main(String[] args) {
-        LNoeud lnoeud = new LNoeud();
+        // LNoeud lnoeud = new LNoeud();
         //System.out.println(lnoeud.getListeNoeuds(0).getTypeSupport());
-        for (int i = 0; i < lnoeud.getlisteNoeuds(); i++) {
-            System.out.println("N" + (i+1));
-            System.out.println("Type: " + lnoeud.getListeNoeuds(i).getTypeSupport());
-            System.out.println("triangle: " + lnoeud.getListeNoeuds(i).gettriangleappui());
-            System.out.println("cote: " + lnoeud.getListeNoeuds(i).gettrianglecote());
-            System.out.println("===========================");
-        }
+        // for (int i = 0; i < lnoeud.getlisteNoeuds(); i++) {
+        //     System.out.println("N" + (i+1));
+        //     System.out.println("Type: " + lnoeud.getListeNoeuds(i).getTypeSupport());
+        //     System.out.println("triangle: " + lnoeud.getListeNoeuds(i).gettriangleappui());
+        //     System.out.println("cote: " + lnoeud.getListeNoeuds(i).gettrianglecote());
+        //     System.out.println("===========================");
+        // }
         // System.out.println(lnoeud.getlisteNoeuds());
         // LBarre lbarre = new LBarre();
         // System.out.println(lbarre.getlisteBarre(1).getFin_noeud().getIdentificationN());

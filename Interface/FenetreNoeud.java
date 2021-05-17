@@ -9,9 +9,8 @@ class FenetreNoeud extends JDialog implements ActionListener{   //JDialog, comme
 
     private JButton add, close;
     private JTextField abscisse, ordonnee, identification;
-    private JLabel label1, label2, label3, /*label4*/ label5;
+    private JLabel label1, label2, label3, label5;
     private JTextArea noeuds;
-    //private JComboBox<String> type;
     private Dimension txt;
     private String newajout = "";
 
@@ -52,19 +51,8 @@ class FenetreNoeud extends JDialog implements ActionListener{   //JDialog, comme
         pane3.add(label3, BorderLayout.NORTH);
         pane3.add(identification, BorderLayout.SOUTH);
 
-        // JPanel pane4 = new JPanel();
-        // pane4.setLayout(new BorderLayout());
-        // String[] appuis = {"AppuiSimple","AppuiDouble","NoeudSimple"};
-        // type = new JComboBox<>(appuis);
-        // type.setPreferredSize(new Dimension(100,24));
-        // label4 = new JLabel("Type");
-        // label4.setFont(new Font("Arial", Font.PLAIN, 15));
-        // pane4.add(label4, BorderLayout.NORTH);
-        // pane4.add(type, BorderLayout.SOUTH);
-
         JPanel pane5 = new JPanel();
         pane5.setLayout(new FlowLayout());
-        // pane5.add(pane4);
         pane5.add(pane3);
         pane5.add(pane1);
         pane5.add(pane2);
@@ -109,7 +97,7 @@ class FenetreNoeud extends JDialog implements ActionListener{   //JDialog, comme
                 doerror = true;
             }
             if (doerror == false) {
-                newajout = newajout + /*type.getItemAt(type.getSelectedIndex())*/ "Type" + ";" + identification.getText() + ";(" + abscisse.getText() + "," + ordonnee.getText() + ")" + "\n";
+                newajout = newajout + "Type" + ";" + identification.getText() + ";(" + abscisse.getText() + "," + ordonnee.getText() + ")" + "\n";
                 abscisse.setText("");
                 ordonnee.setText("");
                 identification.setText("");

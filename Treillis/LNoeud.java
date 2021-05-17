@@ -8,7 +8,6 @@ package Treillis;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-
 import Terrain.LTriangle;
 import Terrain.Triangle;
 
@@ -122,5 +121,4 @@ public class LNoeud {
     public int getlisteNoeuds() {                                                                                           //méthode get du nombre de noeuds du tableau
         return this.nbnoeuds;
     }
-    //TODO: set identifiant correspondant au coté du triangle sur lequel est l'appui
 }
