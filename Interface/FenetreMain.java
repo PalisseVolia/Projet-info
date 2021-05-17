@@ -73,6 +73,7 @@ class FenetreMain extends JFrame implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e) {
+        //TODO: ajouter la définition de l'espace de création du treillis
         if (e.getSource() == noeud) {
             FenetreNoeud fen = new FenetreNoeud(this);
             fen.setVisible(true);
@@ -136,6 +137,7 @@ class FenetreMain extends JFrame implements ActionListener{
         ajout = ajout.replace("error : l'abscisse ou l'ordonnée n'est pas un réel"+"\n", "");
         ajout = ajout.replace("error : veuillez entrer un identifiant de noeud"+"\n", "");
         noeuds.setText(noeuds.getText().concat(ajout));
+        //TODO: actualisation du type de noeuds après changement dans le fichier txt (auto ou manuel)
     }
     private void initBarres(String ajout) {
         ajout = ajout.replace("error : deux noeuds similaires sélectionnés"+"\n", "");

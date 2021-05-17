@@ -32,7 +32,7 @@ public class LNoeud {
                     mot = line.split(";");
                     mot[2] = mot[2].replace("(","").replace(")", "");
                     coord = mot[2].split(",");
-                    lNoeuds[k] = new Noeud(Double.parseDouble(coord[0]), Double.parseDouble(coord[1]), mot[1], 3);          //remplis un tableau avec les noeuds du treillis
+                    lNoeuds[k] = new Noeud(Double.parseDouble(coord[0]), Double.parseDouble(coord[1]), mot[1], 3, 0, 0);          //remplis un tableau avec les noeuds du treillis
                     k = k+1;
                     Appui(lNoeuds, nbnoeuds);                                                                               //détermine les différents types d'appuis en fonction de la position des noeuds dans le terrain
                     this.nbnoeuds = k;                                                                                      //actualise le nombre total de noeuds
@@ -68,6 +68,8 @@ public class LNoeud {
                     if ((ptcheck < 0.001)&&(ptcheck > -0.001)) {                                                            //si le noeud appartiens au coté 1 à 0.002 près
                         if (((abscheck-ctri.getAbscisseT1())*(abscheck-ctri.getAbscisseT2()) + (ordcheck-ctri.getOrdonneeT1())*(ordcheck-ctri.getOrdonneeT2())) <= 0) {
                             lNoeud[i].setTypeSupport(4);                                                                    //le noeud est un appui dont le type n'a pas encore été déterminé
+                            lNoeud[i].settriangleappui(j);                                                                  //le neoud s'appuie sur le triangle N°J
+                            lNoeud[i].settrianglecote(1);                                                                   //le neoud s'appuie sur le coté N°1
                             found = true;                                                                                   //la solution est trouvée
                         }
                     }
@@ -80,6 +82,8 @@ public class LNoeud {
                         if ((ptcheck < 0.001)&&(ptcheck > -0.001)) {                                                        //si le noeud appartiens au coté 2 à 0.002 près
                             if (((abscheck-ctri.getAbscisseT2())*(abscheck-ctri.getAbscisseT3()) + (ordcheck-ctri.getOrdonneeT2())*(ordcheck-ctri.getOrdonneeT3())) <= 0) {
                                 lNoeud[i].setTypeSupport(4);                                                                //le noeud est un appui dont le type n'a pas encore été déterminé
+                                lNoeud[i].settriangleappui(j);                                                                  //le neoud s'appuie sur le triangle N°J
+                                lNoeud[i].settrianglecote(2);                                                                   //le neoud s'appuie sur le coté N°2
                                 found = true;
                             }
                         }
@@ -92,6 +96,8 @@ public class LNoeud {
                             if ((ptcheck < 0.001)&&(ptcheck > -0.001)) {                                                    //si le noeud appartiens au coté 3 à 0.002 près
                                 if (((abscheck-ctri.getAbscisseT3())*(abscheck-ctri.getAbscisseT1()) + (ordcheck-ctri.getOrdonneeT3())*(ordcheck-ctri.getOrdonneeT1())) <= 0) {
                                     lNoeud[i].setTypeSupport(4);                                                            //le noeud est un appui dont le type n'a pas encore été déterminé
+                                    lNoeud[i].settriangleappui(j);                                                                  //le neoud s'appuie sur le triangle N°J
+                                    lNoeud[i].settrianglecote(3);                                                                   //le neoud s'appuie sur le coté N°3
                                     found = true;
                                 }
                             }
