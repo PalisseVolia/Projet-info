@@ -144,7 +144,6 @@ class FenetreMain extends JFrame implements ActionListener{
         ajout = ajout.replace("error : veuillez entrer un identifiant de barre" +"\n", "");
         barres.setText(barres.getText().concat(ajout));
     }
-
     private void initTriangles(String ajout) {
         ajout = ajout.replace("error : l'abscisse ou l'ordonnée d'un des points n'est pas un réel"+"\n", "");
         ajout = ajout.replace("error : veuillez entrer un identifiant"+"\n", "");
