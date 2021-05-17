@@ -106,7 +106,7 @@ public class FenetreTriangle extends JDialog implements ActionListener {
     public String getNewajout() {
         return newajout;
     }
-
+    //TODO: Si possible ajouter une erreur pour le cas ou les points sont ne dehors de la zone de construction
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == add) {
             boolean doerror = false;

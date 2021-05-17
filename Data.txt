@@ -1,9 +1,8 @@
+ZoneConstructible;1;2;3;4
 TRIANGLES
-T1;(1,1);(1,2);(2,2)
-T2;(3,2);(2,4);(4,3)
+sdqds;(1,2);(5,2);(6,556)
 FINTRIANGLES
 NOEUDS
-Appui;N1;(1.5,1.5)
-Appui;N3;(2.5,3)
-NoeudSimple;N5;(1.5,3)
 FINNOEUDS
+BARRES
+FINBARRES

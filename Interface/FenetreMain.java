@@ -13,9 +13,10 @@ import java.io.FileWriter;
 class FenetreMain extends JFrame implements ActionListener{
     private static final long serialVersionUID = 1L;
 
-    private JButton noeud, barre, triangle, compute;
+    private JButton espace, noeud, barre, triangle, compute;
+    private JTextField espconstru;
     private JTextArea noeuds, barres, triangles;
-    private JLabel label1, label2, label3;
+    private JLabel label1, label2, label3, label4;
 
     public FenetreMain() {
         setTitle("Treillis calculator 2000");
@@ -51,32 +52,73 @@ class FenetreMain extends JFrame implements ActionListener{
         pane3.add(triangles, BorderLayout.SOUTH);
         pane3.add(label3, BorderLayout.NORTH);
 
+        JPanel pane4 = new JPanel();
+        pane4.setLayout(new FlowLayout());
+        pane4.add(pane3);
+        pane4.add(pane1);
+        pane4.add(pane2);
+
+        JPanel pane5 = new JPanel();
+        pane5.setLayout(new BorderLayout());
+        espconstru = new JTextField();
+        espconstru.setEditable(false);
+        espconstru.setPreferredSize(new Dimension(150,24));
+        label4 = new JLabel("Espace de construction :");
+        label4.setFont(new Font("Arial", Font.PLAIN, 20));
+        pane5.add(label4, BorderLayout.NORTH);
+        pane5.add(espconstru, BorderLayout.SOUTH);
+
         Container contenu = getContentPane();
-        contenu.setLayout(new FlowLayout());
-        contenu.add(pane3);
-        contenu.add(pane1);
-        contenu.add(pane2);
+        contenu.setLayout(new BorderLayout());
+        contenu.add(pane4, BorderLayout.NORTH);
+        contenu.add(pane5, BorderLayout.SOUTH);
         
         JMenuBar bar = new JMenuBar();
         setJMenuBar(bar);
+        espace = new JButton("espace construction");
+        triangle = new JButton("triangle");
+        triangle.setVisible(false);
         noeud = new JButton("noeud");
         noeud.setVisible(false);
         barre = new JButton("barre");
         barre.setVisible(false);
-        triangle = new JButton("triangle");
         compute = new JButton("compute");
+        bar.add(espace);
         bar.add(triangle);
         bar.add(noeud);
         bar.add(barre);
         bar.add(compute);
+        espace.addActionListener(this);
+        triangle.addActionListener(this);
         noeud.addActionListener(this);
         barre.addActionListener(this);
-        triangle.addActionListener(this);
         compute.addActionListener(this);
     }
 
     public void actionPerformed(ActionEvent e) {
-        //TODO: ajouter la définition de l'espace de création du treillis
+        if (e.getSource() == espace) {
+            FenetreEspace fen = new FenetreEspace(this);
+            fen.setVisible(true);
+            initEspace(fen.getNewajout());
+            espace.setVisible(false);
+            triangle.setVisible(true);
+        }
+        if (e.getSource() == triangle) {
+            FenetreTriangle fen = new FenetreTriangle(this);
+            fen.setVisible(true);
+            initTriangles(fen.getNewajout());
+            triangle.setVisible(false);
+            noeud.setVisible(true);
+            try {
+                File dataf = new File("Data.txt");
+                dataf.delete();
+                BufferedWriter data = new BufferedWriter(new FileWriter("Data.txt",true));
+                data.write("TRIANGLES" + "\n" + triangles.getText() + "FINTRIANGLES" + "\n");
+                data.close();
+            } catch (Exception err) {
+                System.out.println("Erreur :\n"+err);
+            }
+        }
         if (e.getSource() == noeud) {
             FenetreNoeud fen = new FenetreNoeud(this);
             fen.setVisible(true);
@@ -105,7 +147,6 @@ class FenetreMain extends JFrame implements ActionListener{
                     }
                 }
                 datar.close();
-                
             } catch (Exception err) {
                 System.out.println("Erreur :\n"+err);
             }
@@ -115,26 +156,10 @@ class FenetreMain extends JFrame implements ActionListener{
             fen.setVisible(true);
             initBarres(fen.getNewajout());
             barre.setVisible(false);
-            triangle.setVisible(true);
+            espace.setVisible(true);
             try {
                 BufferedWriter data = new BufferedWriter(new FileWriter("Data.txt",true));
                 data.write("BARRES" + "\n" + barres.getText() + "FINBARRES" + "\n");
-                data.close();
-            } catch (Exception err) {
-                System.out.println("Erreur :\n"+err);
-            }
-        }
-        if (e.getSource() == triangle) {
-            FenetreTriangle fen = new FenetreTriangle(this);
-            fen.setVisible(true);
-            initTriangles(fen.getNewajout());
-            triangle.setVisible(false);
-            noeud.setVisible(true);
-            try {
-                File dataf = new File("Data.txt");
-                dataf.delete();
-                BufferedWriter data = new BufferedWriter(new FileWriter("Data.txt",true));
-                data.write("TRIANGLES" + "\n" + triangles.getText() + "FINTRIANGLES" + "\n");
                 data.close();
             } catch (Exception err) {
                 System.out.println("Erreur :\n"+err);
@@ -145,6 +170,7 @@ class FenetreMain extends JFrame implements ActionListener{
                 File dataf = new File("Data.txt");
                 dataf.delete();
                 BufferedWriter data = new BufferedWriter(new FileWriter("Data.txt",true));
+                data.write(espconstru.getText() + "\n");
                 data.write("TRIANGLES" + "\n" + triangles.getText() + "FINTRIANGLES" + "\n");
                 data.write("NOEUDS" + "\n" + noeuds.getText() + "FINNOEUDS" + "\n");
                 data.write("BARRES" + "\n" + barres.getText() + "FINBARRES" + "\n");
@@ -155,6 +181,9 @@ class FenetreMain extends JFrame implements ActionListener{
         }
     }
 
+    private void initEspace(String ajout) {
+        espconstru.setText(ajout);
+    }
     private void initNoeuds(String ajout) {
         ajout = ajout.replace("error : l'abscisse ou l'ordonnée n'est pas un réel"+"\n", "");
         ajout = ajout.replace("error : veuillez entrer un identifiant de noeud"+"\n", "");
