@@ -13,7 +13,7 @@ import java.io.FileWriter;
 class FenetreMain extends JFrame implements ActionListener {
     private static final long serialVersionUID = 1L;
 
-    private JButton espace, noeud, barre, triangle, compute, importer;
+    private JButton espace, noeud, barre, triangle, compute, importer, Appuis;
     private JTextField espconstru, path;
     private JTextArea noeuds, barres, triangles;
     private JLabel label1, label2, label3, label4, label5;
@@ -98,18 +98,21 @@ class FenetreMain extends JFrame implements ActionListener {
         barre.setVisible(false);
         compute = new JButton("compute");
         importer = new JButton("IMPORTER");
+        Appuis = new JButton("appuis");
         bar.add(espace);
         bar.add(triangle);
         bar.add(noeud);
         bar.add(barre);
         bar.add(compute);
         bar.add(importer);
+        bar.add(Appuis);
         espace.addActionListener(this);
         triangle.addActionListener(this);
         noeud.addActionListener(this);
         barre.addActionListener(this);
         compute.addActionListener(this);
         importer.addActionListener(this);
+        Appuis.addActionListener(this);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -257,6 +260,12 @@ class FenetreMain extends JFrame implements ActionListener {
             } catch (Exception err) {
                 System.out.println("osef" + err);
             }
+        }
+        if (e.getSource() == Appuis) {
+            FenetreAppui fen = new FenetreAppui(this);
+            fen.setVisible(true);
+            System.out.println("test");
+            // TODO: mise a jour de la fenetre et du document texte
         }
     }
 
