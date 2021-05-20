@@ -6,6 +6,5 @@ public class Fenetre {
         fenetrem.setVisible(true);
     }
 }
-// TODO: détermination du type d'appui
 // TODO: rendu graphique du résultat
 // TODO: integration to main

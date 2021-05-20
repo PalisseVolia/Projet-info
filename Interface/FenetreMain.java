@@ -94,18 +94,19 @@ class FenetreMain extends JFrame implements ActionListener {
         triangle.setVisible(false);
         noeud = new JButton("noeud");
         noeud.setVisible(false);
+        Appuis = new JButton("appuis");
+        Appuis.setVisible(false);
         barre = new JButton("barre");
         barre.setVisible(false);
         compute = new JButton("compute");
         importer = new JButton("IMPORTER");
-        Appuis = new JButton("appuis");
         bar.add(espace);
         bar.add(triangle);
         bar.add(noeud);
+        bar.add(Appuis);
         bar.add(barre);
         bar.add(compute);
         bar.add(importer);
-        bar.add(Appuis);
         espace.addActionListener(this);
         triangle.addActionListener(this);
         noeud.addActionListener(this);
@@ -144,7 +145,7 @@ class FenetreMain extends JFrame implements ActionListener {
             fen.setVisible(true);
             initNoeuds(fen.getNewajout());
             noeud.setVisible(false);
-            barre.setVisible(true);
+            Appuis.setVisible(true);
             try {
                 BufferedWriter dataw = new BufferedWriter(new FileWriter("Data.txt", true));
                 dataw.write("NOEUDS" + "\n" + noeuds.getText() + "FINNOEUDS" + "\n");
@@ -169,6 +170,34 @@ class FenetreMain extends JFrame implements ActionListener {
                 datar.close();
             } catch (Exception err) {
                 System.out.println("Erreur :\n" + err);
+            }
+        }
+        if (e.getSource() == Appuis) {
+            FenetreAppui fen = new FenetreAppui(this);
+            fen.setVisible(true);
+            Appuis.setVisible(false);
+            barre.setVisible(true);
+            try {
+                boolean dogetnoeud = false;
+                String ligne;
+                BufferedReader datar = new BufferedReader(new FileReader("Data.txt"));
+                triangles.setText("");
+                noeuds.setText("");
+                barres.setText("");
+                while ((ligne = datar.readLine()) != null) {
+                    if (ligne.equals("FINNOEUDS")) {
+                        dogetnoeud = false;
+                    }
+                    if (dogetnoeud == true) {
+                        noeuds.setText(noeuds.getText() + ligne + "\n");
+                    }
+                    if (ligne.equals("NOEUDS")) {
+                        dogetnoeud = true;
+                    }
+                }
+                datar.close();
+            } catch (Exception err) {
+                System.out.println("why tho :(");
             }
         }
         if (e.getSource() == barre) {
@@ -260,12 +289,6 @@ class FenetreMain extends JFrame implements ActionListener {
             } catch (Exception err) {
                 System.out.println("osef" + err);
             }
-        }
-        if (e.getSource() == Appuis) {
-            FenetreAppui fen = new FenetreAppui(this);
-            fen.setVisible(true);
-            System.out.println("test");
-            // TODO: mise a jour de la fenetre et du document texte
         }
     }
 

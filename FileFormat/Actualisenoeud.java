@@ -10,6 +10,7 @@ import Treillis.LNoeud;
 public class Actualisenoeud {
     public Actualisenoeud() {
     }
+
     public void Appui() {
         try {
             BufferedReader noeudr = new BufferedReader(new FileReader("Data.txt"));
@@ -25,22 +26,22 @@ public class Actualisenoeud {
                 if (dogetdata == true) {
                     switch (lNoeud.getListeNoeuds(count).getTypeSupport()) {
                         case 1:
-                        line = line.replace("Type", "AppuiSimple");
-                        break;
+                            line = line.replace("Type", "AppuiSimple");
+                            break;
                         case 2:
-                        line = line.replace("Type", "AppuiDouble");
-                        break;
+                            line = line.replace("Type", "AppuiDouble");
+                            break;
                         case 3:
-                        line = line.replace("Type", "NoeudSimple");
-                        break;
+                            line = line.replace("Type", "NoeudSimple");
+                            break;
                         case 4:
-                        line = line.replace("Type", "Appui");
-                        break;
+                            line = line.replace("Type", "Appui");
+                            break;
                         case 5:
-                        line = "".repeat(line.length());
-                        break;
+                            line = "".repeat(line.length());
+                            break;
                         default:
-                        break;
+                            break;
                     }
                     count = count + 1;
                 }
@@ -54,12 +55,11 @@ public class Actualisenoeud {
             noeudr.close();
             File dataf = new File("Data.txt");
             dataf.delete();
-            BufferedWriter noeudw = new BufferedWriter(new FileWriter("Data.txt",true));
+            BufferedWriter noeudw = new BufferedWriter(new FileWriter("Data.txt", true));
             noeudw.write(data);
             noeudw.close();
-        }
-        catch (Exception e) {
-            System.out.println( "Erreur :le fichier n’existe pas\n ");
+        } catch (Exception e) {
+            System.out.println("Erreur :le fichier n’existe pas\n ");
         }
     }
 }
