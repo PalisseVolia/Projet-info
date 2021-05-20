@@ -16,8 +16,8 @@ public class LBarre {
             Boolean dogetdata = false;
             Noeud noeud1 = new Noeud();
             Noeud noeud2 = new Noeud();
-            int type = 0,k = 0;
-            while ((line=data.readLine()) != null) {
+            int type = 0, k = 0;
+            while ((line = data.readLine()) != null) {
                 if (line.equals("FINBARRES")) {
                     dogetdata = false;
                 }
@@ -39,7 +39,7 @@ public class LBarre {
                         }
                     }
                     lBarre[k] = new Barre(noeud1, noeud2, mot[0], type);
-                    k = k+1;
+                    k = k + 1;
                     this.nbbarres = k;
                 }
                 if (line.equals("BARRES")) {
@@ -49,15 +49,16 @@ public class LBarre {
             this.listebarres = lBarre;
             data.close();
         } catch (Exception e) {
-            System.out.println(" Erreur :\n "+e);
+            System.out.println(" Erreur :\n " + e);
         }
     }
 
     public Barre getlisteBarre(int i) {
         return this.listebarres[i];
     }
-    public int getListeNoeuds() {
+
+    public int getListeBarres() {
         return this.nbbarres;
     }
-    
+
 }

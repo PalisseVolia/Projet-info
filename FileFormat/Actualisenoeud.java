@@ -37,7 +37,7 @@ public class Actualisenoeud {
                         line = line.replace("Type", "Appui");
                         break;
                         case 5:
-                        line = line.replace("Type", "delete");
+                        line = "".repeat(line.length());
                         break;
                         default:
                         break;
@@ -47,7 +47,9 @@ public class Actualisenoeud {
                 if (line.equals("NOEUDS")) {
                     dogetdata = true;
                 }
-                data = data + line + "\n";
+                if (line.equals("") == false) {
+                    data = data + line + "\n";
+                }
             }
             noeudr.close();
             File dataf = new File("Data.txt");
