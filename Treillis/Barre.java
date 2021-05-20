@@ -4,12 +4,12 @@ package Treillis;
 //Extension de la classe Noeud, on crée une barre avec deux noeuds (début et fin), un type (1 = Pleine, 2 = en I) et une identification
 
 // =======================================
-//TODO: catalogue de barres
+
 public class Barre extends Noeud {
 
     Noeud debut_noeud;
     Noeud fin_noeud;
-    int type;
+    int type; // (1) = Pleine (2) = En I
     String identificationB;
 
     Barre(Noeud noeud1, Noeud noeud2, String idb, int type) { // constructeur
