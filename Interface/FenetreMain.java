@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 
-class FenetreMain extends JFrame implements ActionListener {
+public class FenetreMain extends JFrame implements ActionListener {
     private static final long serialVersionUID = 1L;
 
     private JButton espace, noeud, barre, triangle, compute, importer, Appuis;

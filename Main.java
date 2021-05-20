@@ -1,5 +1,12 @@
+import Interface.FenetreMain;
+
 public class Main {
     public static void main(String[] args) {
+        
+        //Démarrer le programme
+        //Start();
+
+
         // LNoeud lnoeud = new LNoeud();
         // System.out.println(lnoeud.getListeNoeuds(4).getTypeSupport());
         // System.out.println(lnoeud.getListeNoeuds(0).getTypeSupport());
@@ -23,7 +30,6 @@ public class Main {
         // Espace space = new Espace("ZoneConstructible;1;2;3;4");
         // System.out.println(space.getYmax());
 
-
         // LNoeud noe = new LNoeud(); //tu crée une liste des noeuds du treillis
         // int i = 0; //tu fera sans doute autrement mais en gros c'est un int qui vas déterminer quel noeud tu récupère dans la liste
         // i = noe.getlisteNoeuds(); //ce code te retourne le nombre de noeuds dans le treillis ça vas sans doute t'etre utile pour un for par exemple
@@ -34,4 +40,11 @@ public class Main {
         //                                              //les points sont associés comme ça par rapport aux cotés coté 1 = T1/T2, coté 2 = T2/T3, coté 3 = T3/T1
         // tri.getListeTriangles(ntri).getOrdonneeT2(); //de al mm manière tu peux obtenir l'ordonnée du point T2 par exemple
     }
+
+    public static void Start() {
+            FenetreMain fenetrem = new FenetreMain();
+            fenetrem.setVisible(true);
+    }
 }
+
+// TODO: rendu graphique du résultat
