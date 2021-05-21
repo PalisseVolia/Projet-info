@@ -93,11 +93,11 @@ public class Triangle {
 
 
     public static double trouve_angle(double x1,double x2, double x3, double y1, double y2, double y3) {
-        double p0c = Math.sqrt(Math.pow(x2-x1,2)+
+        double p12 = Math.sqrt(Math.pow(x2-x1,2)+
                             Math.pow(y2-y1,2));   
-        double p1c = Math.sqrt(Math.pow(x2-x3,2)+
+        double p23 = Math.sqrt(Math.pow(x2-x3,2)+
                             Math.pow(y2-x3,2)); 
-        double p0p1 = Math.sqrt(Math.pow(x3-x1,2)+
+        double p13 = Math.sqrt(Math.pow(x3-x1,2)+
                              Math.pow(y3-y1,2));
         return Math.acos((p1c*p1c+p0c*p0c-p0p1*p0p1)/(2*p1c*p0c));
     }
