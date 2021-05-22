@@ -4,7 +4,7 @@ package Treillis;
 // On associe des valeurs à un nœud en fonction de ses coordonnées et de son type de support (simple, double, encastré).
 //
 // =======================================
-
+import java.util.*;
 
 public class Noeud {
 	
@@ -12,8 +12,11 @@ public class Noeud {
   	private Double ordonnee;
 	private int typeSupport;           	// (1) appui simple (tangentiel ), (2) appui double (bloqué en translation), (3) noeud simple, (4) appui, (5) impossible
   	private String identificationN;    	// nom noeud
-	private int[] cotetriangle; 		    // Si le noeud est un appui, définit sur quel coté de quel triangle il s'appuie: [0] = n° triangle   [1] = coté triangle (coté 1 = T1/T2, coté 2 = T2/T3, coté 3 = T3/T1)
-  
+	private int[] cotetriangle; // Si le noeud est un appui, définit sur quel coté de quel triangle il s'appuie: [0] = n° triangle   [1] = coté triangle (coté 1 = T1/T2, coté 2 = T2/T3, coté 3 = T3/T1)
+	private ArrayList<String> tabbar = new ArrayList<String>(); 
+
+
+
 	Noeud (Double abs, Double ord, String idn, int support, int triangle, int cotetri) {    	//constructeur
     	this.abscisse = abs;
     	this.ordonnee = ord;
@@ -65,5 +68,11 @@ public class Noeud {
 	}
 	public void setIdentificationN(String identificationN) {
 		this.identificationN = identificationN;
+	}
+	public ArrayList<String> getTabbar(){
+		return tabbar;
+	}
+	public void addTabbar(String s){
+		tabbar.add(s);
 	}
 }
