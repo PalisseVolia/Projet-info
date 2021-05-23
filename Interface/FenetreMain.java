@@ -2,6 +2,8 @@ package Interface;
 
 import javax.swing.*;
 import FileFormat.Actualisenoeud;
+import FileFormat.Gauss;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.BufferedReader;
@@ -229,6 +231,8 @@ public class FenetreMain extends JFrame implements ActionListener {
             }
             FenetreRendu fen = new FenetreRendu();
             fen.setVisible(true);
+            Gauss gauss = new Gauss();
+            gauss.gaussfin();
         }
         if (e.getSource() == importer) {
             try {

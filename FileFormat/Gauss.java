@@ -1,3 +1,4 @@
+package FileFormat;
 import java.util.ArrayList;
 import Treillis.LNoeud;
 import Treillis.Noeud;
@@ -37,6 +38,7 @@ public class Gauss {
 	}
 
 	public int pivot(int i) {
+		System.out.println("test1");
 		int n = M.size();
 		int j = i;
 		for (int k = i + 1; k < n; k++) {
@@ -44,6 +46,7 @@ public class Gauss {
 				j = k;
 			} // if abs(M[k,i])>abs(M[j,i])
 		}
+		System.out.println("test2");
 		return j;
 	}
 
@@ -78,12 +81,14 @@ public class Gauss {
 				elimine(i, j);// Elimine tout les coefficients en dessous des pivots
 			}
 		}
+		System.out.println("test3");
 		normaliseDiagonale();// Met les pivots en 1
 		for (int i = n - 1; i > 0; i--) {
 			for (int j = i - 1; j >= 0; j--) {
 				elimine(i, j);// élimine les coefficient au dessus des pivots
 			}
 		}
+		System.out.println("test4");
 		return M;
 	}
 
@@ -274,12 +279,11 @@ public class Gauss {
 	// return res;
 	// }
 
-	public static void gaussfin() {
+	public void gaussfin() {
 		Gauss res = new Gauss();
 		LNoeud lnoeud = new LNoeud();
 		LBarre lBarre = new LBarre();
 		ArrayList<ArrayList<Double>> A = remplitmatrice(lnoeud, lBarre);
-
 		ArrayList<ArrayList<Double>> result = res.pGauss(A);
 		// résultat à récupérer
 		System.out.println(result);// pour le voir
