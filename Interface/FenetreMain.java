@@ -227,6 +227,8 @@ public class FenetreMain extends JFrame implements ActionListener {
             } catch (Exception err) {
                 System.out.println("Erreur :\n" + err);
             }
+            FenetreRendu fen = new FenetreRendu();
+            fen.setVisible(true);
         }
         if (e.getSource() == importer) {
             try {

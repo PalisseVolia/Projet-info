@@ -31,7 +31,17 @@ public class LNoeud {
                     mot = line.split(";");
                     mot[2] = mot[2].replace("(","").replace(")", "");
                     coord = mot[2].split(",");
-                    lNoeuds[k] = new Noeud(Double.parseDouble(coord[0]), Double.parseDouble(coord[1]), mot[1], 3, 0, 0);        //remplis un tableau avec les noeuds du treillis
+                    lNoeuds[k] = new Noeud(Double.parseDouble(coord[0]), Double.parseDouble(coord[1]), mot[1], 3, 0, 0); //remplis un tableau avec les noeuds du treillis
+                    
+                    // TEST PEUT TRES MAL TOURNER OSKOUR
+                    if (mot[0].equals("AppuiSimple")) {
+                        lNoeuds[k] = new Noeud(Double.parseDouble(coord[0]), Double.parseDouble(coord[1]), mot[1], 1, 0, 0);
+                    }
+                    if (mot[0].equals("AppuiDouble")) {
+                        lNoeuds[k] = new Noeud(Double.parseDouble(coord[0]), Double.parseDouble(coord[1]), mot[1], 2, 0, 0);
+                    }
+                    // FIN DU TEST QUI PEUT MAL TOURNER (oskour)
+
                     k = k+1;
                     Appui(lNoeuds, nbnoeuds);                                                                                   //détermine les différents types d'appuis en fonction de la position des noeuds dans le terrain
                     this.nbnoeuds = k;                                                                                          //actualise le nombre total de noeuds
