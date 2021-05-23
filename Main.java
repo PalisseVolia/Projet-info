@@ -4,8 +4,8 @@ public class Main {
     public static void main(String[] args) {
         
         //Démarrer le programme
-        //Start();
-
+        Start();
+        //TODO: triangles qui disparaissent après un tour complet ?!
 
         // LNoeud lnoeud = new LNoeud();
         // System.out.println(lnoeud.getListeNoeuds(4).getTypeSupport());
@@ -46,5 +46,3 @@ public class Main {
             fenetrem.setVisible(true);
     }
 }
-
-// TODO: rendu graphique du résultat
