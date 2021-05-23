@@ -5,7 +5,6 @@ package Terrain;
 //
 // ========================================
 
-
 public class Triangle {
     private String identificationT;                                                                             //identifiant du triangle
     private Double abscisseT1;                                                                                  //abscisses de ses trois sommets
