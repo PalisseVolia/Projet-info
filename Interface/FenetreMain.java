@@ -181,9 +181,7 @@ public class FenetreMain extends JFrame implements ActionListener {
                 boolean dogetnoeud = false;
                 String ligne;
                 BufferedReader datar = new BufferedReader(new FileReader("Data.txt"));
-                triangles.setText("");
                 noeuds.setText("");
-                barres.setText("");
                 while ((ligne = datar.readLine()) != null) {
                     if (ligne.equals("FINNOEUDS")) {
                         dogetnoeud = false;
@@ -205,7 +203,6 @@ public class FenetreMain extends JFrame implements ActionListener {
             fen.setVisible(true);
             initBarres(fen.getNewajout());
             barre.setVisible(false);
-            espace.setVisible(true);
             try {
                 BufferedWriter data = new BufferedWriter(new FileWriter("Data.txt", true));
                 data.write("BARRES" + "\n" + barres.getText() + "FINBARRES" + "\n");

@@ -1,8 +1,14 @@
+ZoneConstructible;100;0;100;0
 TRIANGLES
-T1;(1,1);(1,1);(1,1)
+T1;(10,10);(10,20);(20,20)
 FINTRIANGLES
 NOEUDS
-AppuiDouble;N;(1,1)
+AppuiDouble;N1;(15,15)
+NoeudSimple;N2;(30,30)
+NoeudSimple;N3;(30,15)
 FINNOEUDS
 BARRES
+B1;Pleine;N1;N2
+B2;Pleine;N1;N3
+B3;Pleine;N2;N3
 FINBARRES

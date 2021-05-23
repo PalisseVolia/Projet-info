@@ -85,12 +85,13 @@ public class FenetreRendu extends JFrame {
             int y = (int) Math.round(noe.getListeNoeuds(i).getordonnee()*adjust);
             switch (noe.getListeNoeuds(i).getTypeSupport()) {
                 case 1:
-                    g.drawImage(apsimple,(int) (x-10*adjust),(int) (y-10*adjust), (int) (20*adjust), (int) (20*adjust), this);
+                    System.out.println(adjust);
+                    g.drawImage(apsimple,(int) (x-15),(int) (y-15), (int) (30), (int) (30), this);
                     g.setColor(Color.BLACK);
                     g.fillOval(x-(8/2), y-(8/2), 8, 8);
                     break;
                 case 2:
-                    g.drawImage(apdouble,(int) (x-10*adjust),(int) (y-10*adjust), (int) (20*adjust), (int) (20*adjust), this);
+                    g.drawImage(apdouble,(int) (x-15),(int) (y-15), (int) (30), (int) (30), this);
                     g.setColor(Color.BLACK);
                     g.fillOval(x-(8/2), y-(8/2), 8, 8);
                     break;
