@@ -4,7 +4,6 @@ package Terrain;
 // On définit les triangles délimitant le terrain
 //
 // ========================================
-import java.lang.Math;
 
 public class Triangle {
     private String identificationT;                                                                             //identifiant du triangle
@@ -23,7 +22,6 @@ public class Triangle {
         this.ordonneeT1 = ord1;
         this.ordonneeT2 = ord2;
         this.ordonneeT3 = ord3;
-        angles();
     }
     Triangle () {                                                                                               //constructeur par défaut
         this.identificationT = "Non_Identifié";
@@ -33,7 +31,6 @@ public class Triangle {
         this.ordonneeT1 = 0.0;
         this.ordonneeT2 = 0.0;
         this.ordonneeT3 = 0.0;
-        angles();
     }
     public Double getOrdonneeT3() {                                                                             //méthodes get et set
         return ordonneeT3;
@@ -77,3 +74,4 @@ public class Triangle {
     public void setIdentificationT(String identificationT) {
         this.identificationT = identificationT;
     }
+}
