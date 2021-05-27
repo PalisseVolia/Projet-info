@@ -11,14 +11,14 @@ public class Noeud {
 	
   	private Double abscisse;
   	private Double ordonnee;
-	private int typeSupport;           	// (1) appui simple (tangentiel ), (2) appui double (bloqué en translation), (3) noeud simple, (4) appui, (5) impossible
-  	private String identificationN;    	// nom noeud
-	private int[] cotetriangle; // Si le noeud est un appui, définit sur quel coté de quel triangle il s'appuie: [0] = n° triangle   [1] = coté triangle (coté 1 = T1/T2, coté 2 = T2/T3, coté 3 = T3/T1)
+	private int typeSupport;           															// (1) appui simple (tangentiel ), (2) appui double (bloqué en translation), (3) noeud simple, (4) appui, (5) impossible
+  	private String identificationN;    															// nom noeud
+	private int[] cotetriangle; 																// Si le noeud est un appui, définit sur quel coté de quel triangle il s'appuie: [0] = n° triangle   [1] = coté triangle (coté 1 = T1/T2, coté 2 = T2/T3, coté 3 = T3/T1)
 	private ArrayList<String> tabbar = new ArrayList<String>(); 
 
 
 
-	Noeud (Double abs, Double ord, String idn, int support, int triangle, int cotetri) {    	//constructeur
+	Noeud (Double abs, Double ord, String idn, int support, int triangle, int cotetri) {    	//constructeur principal
 
     	this.abscisse = abs;
     	this.ordonnee = ord;
@@ -27,7 +27,7 @@ public class Noeud {
 		int[] tmp = {triangle, cotetri};
 		this.cotetriangle = tmp;
   	}
-  	Noeud () {                        														//constructeur par défaut
+  	Noeud () {                        															//constructeur par défaut
     	this.abscisse = 0.0;
     	this.ordonnee = 0.0;
     	this.identificationN = "Non_Identifié";
@@ -71,5 +71,13 @@ public class Noeud {
 
 	public String getIdentificationN() {
 		return identificationN;
+	}
+
+	public ArrayList<String> getTabbar(){
+		return tabbar;
+	}
+
+	public void addTabbar(String s){
+		tabbar.add(s);
 	}
 }
