@@ -15,7 +15,7 @@ public class Noeud {
 	private int typeSupport;           															// (1) appui simple (tangentiel ), (2) appui double (bloqué en translation), (3) noeud simple, (4) appui, (5) impossible
   	private String identificationN;    															// nom noeud
 	private int[] cotetriangle; 																// Si le noeud est un appui, définit sur quel coté de quel triangle il s'appuie: [0] = n° triangle   [1] = coté triangle (coté 1 = T1/T2, coté 2 = T2/T3, coté 3 = T3/T1)
-	private ArrayList<String> tabbar = new ArrayList<String>(); // liste qui contient les différents par en 1 noeud
+	private ArrayList<String> tabbar = new ArrayList<String>(); 								// liste qui contient les différents par en 1 noeud
 
 
 
