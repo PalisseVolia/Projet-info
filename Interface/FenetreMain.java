@@ -1,4 +1,9 @@
 package Interface;
+// ========== CLASSE FenetreMain ===========
+//
+// ouvre la fenetre principale du programme
+//
+// =============================================
 
 import javax.swing.*;
 import FileFormat.Actualisenoeud;
@@ -24,6 +29,7 @@ public class FenetreMain extends JFrame implements ActionListener {
         setTitle("Treillis calculator 2000");
         setSize(1500, 800);
 
+        //création des différents éléments graphiques de la fenetre
         JPanel pane1 = new JPanel();
         pane1.setLayout(new BorderLayout());
         noeuds = new JTextArea("");
@@ -119,20 +125,20 @@ public class FenetreMain extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == espace) {
+        if (e.getSource() == espace) {                                  // si on appuie sur le bouton espace, ouvre la fenetre correspondante
             FenetreEspace fen = new FenetreEspace(this);
             fen.setVisible(true);
-            initEspace(fen.getNewajout());
-            espace.setVisible(false);
-            triangle.setVisible(true);
+            initEspace(fen.getNewajout());                              // appel la méthode d'actualisation du texte de la fenetre principale
+            espace.setVisible(false);                                   // masque le bouton espace
+            triangle.setVisible(true);                                  // rends le bouton triangle visible
         }
-        if (e.getSource() == triangle) {
+        if (e.getSource() == triangle) {                                // si on appuie sur le bouton triangle, ouvre la fenetre correspondante
             FenetreTriangle fen = new FenetreTriangle(this);
             fen.setVisible(true);
-            initTriangles(fen.getNewajout());
-            triangle.setVisible(false);
-            noeud.setVisible(true);
-            try {
+            initTriangles(fen.getNewajout());                           // appel la méthode d'actualisation du texte du JtextArea correspondant
+            triangle.setVisible(false);                                 // masque le bouton triangle
+            noeud.setVisible(true);                                     // affiche le bouton noeud
+            try {                                                       // met a jour le fichier de données
                 File dataf = new File("Data.txt");
                 dataf.delete();
                 BufferedWriter data = new BufferedWriter(new FileWriter("Data.txt", true));
@@ -142,13 +148,13 @@ public class FenetreMain extends JFrame implements ActionListener {
                 System.out.println("Erreur :\n" + err);
             }
         }
-        if (e.getSource() == noeud) {
+        if (e.getSource() == noeud) {                                   // si on appuie sur le bouton noeud, ouvre la fenetre correspondante
             FenetreNoeud fen = new FenetreNoeud(this);
             fen.setVisible(true);
-            initNoeuds(fen.getNewajout());
-            noeud.setVisible(false);
-            Appuis.setVisible(true);
-            try {
+            initNoeuds(fen.getNewajout());                              // appel la méthode d'actualisation du texte du JtextArea correspondant
+            noeud.setVisible(false);                                    // masque le bouton noeud
+            Appuis.setVisible(true);                                    // affiche le bouton appuis
+            try {                                                       // met a jour le fichier de données
                 BufferedWriter dataw = new BufferedWriter(new FileWriter("Data.txt", true));
                 dataw.write("NOEUDS" + "\n" + noeuds.getText() + "FINNOEUDS" + "\n");
                 dataw.close();
@@ -174,18 +180,16 @@ public class FenetreMain extends JFrame implements ActionListener {
                 System.out.println("Erreur :\n" + err);
             }
         }
-        if (e.getSource() == Appuis) {
+        if (e.getSource() == Appuis) {                              // si on appuie sur le bouton appuis, ouvre la fenetre correspondante
             FenetreAppui fen = new FenetreAppui(this);
             fen.setVisible(true);
-            Appuis.setVisible(false);
-            barre.setVisible(true);
-            try {
+            Appuis.setVisible(false);                               // masque le bouton appuis
+            barre.setVisible(true);                                 // affiche le bouton barre
+            try {                                                   // met a jour le fichier de données
                 boolean dogetnoeud = false;
                 String ligne;
                 BufferedReader datar = new BufferedReader(new FileReader("Data.txt"));
-                triangles.setText("");
                 noeuds.setText("");
-                barres.setText("");
                 while ((ligne = datar.readLine()) != null) {
                     if (ligne.equals("FINNOEUDS")) {
                         dogetnoeud = false;
@@ -202,13 +206,12 @@ public class FenetreMain extends JFrame implements ActionListener {
                 System.out.println("why tho :(");
             }
         }
-        if (e.getSource() == barre) {
+        if (e.getSource() == barre) {                               // si on appuie sur le bouton barres, ouvre la fenetre correspondante
             FenetreBarre fen = new FenetreBarre(this);
             fen.setVisible(true);
-            initBarres(fen.getNewajout());
-            barre.setVisible(false);
-            espace.setVisible(true);
-            try {
+            initBarres(fen.getNewajout());                          // appel la méthode d'actualisation du texte du JtextArea correspondant
+            barre.setVisible(false);                                // masque le bouton barres
+            try {                                                   // met a jour le fichier de données
                 BufferedWriter data = new BufferedWriter(new FileWriter("Data.txt", true));
                 data.write("BARRES" + "\n" + barres.getText() + "FINBARRES" + "\n");
                 data.close();
@@ -216,8 +219,8 @@ public class FenetreMain extends JFrame implements ActionListener {
                 System.out.println("Erreur :\n" + err);
             }
         }
-        if (e.getSource() == compute) {
-            try {
+        if (e.getSource() == compute) {                             // si on appuie sur le bouton compute
+            try {                                                   // met a jour le fichier de données
                 File dataf = new File("Data.txt");
                 dataf.delete();
                 BufferedWriter data = new BufferedWriter(new FileWriter("Data.txt", true));
@@ -229,13 +232,13 @@ public class FenetreMain extends JFrame implements ActionListener {
             } catch (Exception err) {
                 System.out.println("Erreur :\n" + err);
             }
-            FenetreRendu fen = new FenetreRendu();
+            FenetreRendu fen = new FenetreRendu();                  // ouvre la fenetre de rendu
             fen.setVisible(true);
             Gauss gauss = new Gauss();
             gauss.gaussfin();
         }
-        if (e.getSource() == importer) {
-            try {
+        if (e.getSource() == importer) {                            // si on appuie sur le bouton importer
+            try {                                                   // récupère toutes les données du chemin d'accès indiqué et met à jour le fichier de données et les JtextArea en conséquence
                 path.setText(path.getText().replace("\\", "/").replace("\"", ""));
                 BufferedReader datanew = new BufferedReader(new FileReader(path.getText()));
                 String text = "";
@@ -298,23 +301,23 @@ public class FenetreMain extends JFrame implements ActionListener {
         }
     }
 
-    private void initEspace(String ajout) {
+    private void initEspace(String ajout) {             // méthode d'actualisation du texte du Jtextfield de l'espace de construction
         espconstru.setText(ajout);
     }
 
-    private void initNoeuds(String ajout) {
+    private void initNoeuds(String ajout) {             // méthode d'actualisation du texte du JtextArea des noeuds
         ajout = ajout.replace("error : l'abscisse ou l'ordonnée n'est pas un réel" + "\n", "");
         ajout = ajout.replace("error : veuillez entrer un identifiant de noeud" + "\n", "");
         noeuds.setText(noeuds.getText().concat(ajout));
     }
 
-    private void initBarres(String ajout) {
+    private void initBarres(String ajout) {             // méthode d'actualisation du texte du JtextArea des barres
         ajout = ajout.replace("error : deux noeuds similaires sélectionnés" + "\n", "");
         ajout = ajout.replace("error : veuillez entrer un identifiant de barre" + "\n", "");
         barres.setText(barres.getText().concat(ajout));
     }
 
-    private void initTriangles(String ajout) {
+    private void initTriangles(String ajout) {          // méthode d'actualisation du texte du JtextArea des triangles
         ajout = ajout.replace("error : l'abscisse ou l'ordonnée d'un des points n'est pas un réel" + "\n", "");
         ajout = ajout.replace("error : veuillez entrer un identifiant" + "\n", "");
         triangles.setText(triangles.getText().concat(ajout));
