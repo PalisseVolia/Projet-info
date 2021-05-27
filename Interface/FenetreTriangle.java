@@ -116,7 +116,7 @@ public class FenetreTriangle extends JDialog implements ActionListener {        
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == add) {                     // si on appuie sur add
             boolean doerror = false;
-            try {                                       // on vérifie que les abscisses/ordonénes sont des réels
+            try {                                       // on vérifie que les abscisses/ordonnées sont des réels
                 Double test = Double.parseDouble(abscisse1.getText()) + Double.parseDouble(abscisse2.getText()) + Double.parseDouble(abscisse3.getText()) + Double.parseDouble(ordonnee1.getText()) + Double.parseDouble(ordonnee2.getText()) + Double.parseDouble(ordonnee3.getText());
                 test = test + test;
             } catch (Exception err) {
@@ -141,7 +141,7 @@ public class FenetreTriangle extends JDialog implements ActionListener {        
                 triangles.setText(newajout);
             }
         }
-        if (e.getSource() == close) {                   //si on appuie sur close on ferme la fenetre
+        if (e.getSource() == close) {                   // si on appuie sur close on ferme la fenetre
             dispose();
         }
     }
