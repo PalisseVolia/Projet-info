@@ -38,9 +38,11 @@ public class LBarre {
                     for (int i = 0; i < lnoeud.getlisteNoeuds(); i++) {                         //pour chaque noeud on les assigne au noeud de début ou de fin de la barre si leurs identifiants correspondent
                         if (lnoeud.getListeNoeuds(i).getIdentificationN().equals(mot[2])) {
                             noeud1 = lnoeud.getListeNoeuds(i);
+                            noeud1.addTabbar(mot[0]);
                         }
                         if (lnoeud.getListeNoeuds(i).getIdentificationN().equals(mot[3])) {
                             noeud2 = lnoeud.getListeNoeuds(i);
+                            noeud2.addTabbar(mot[0]);
                         }
                     }
                     lBarre[k] = new Barre(noeud1, noeud2, mot[0], type);                        // on ajoute la barre dont on a déterminé les arguments au tableau de barres
