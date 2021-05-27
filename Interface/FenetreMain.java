@@ -7,6 +7,8 @@ package Interface;
 
 import javax.swing.*;
 import FileFormat.Actualisenoeud;
+import FileFormat.Gauss;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.BufferedReader;
@@ -232,6 +234,8 @@ public class FenetreMain extends JFrame implements ActionListener {
             }
             FenetreRendu fen = new FenetreRendu();                  // ouvre la fenetre de rendu
             fen.setVisible(true);
+            Gauss gauss = new Gauss();
+            gauss.gaussfin();
         }
         if (e.getSource() == importer) {                            // si on appuie sur le bouton importer
             try {                                                   // récupère toutes les données du chemin d'accès indiqué et met à jour le fichier de données et les JtextArea en conséquence
