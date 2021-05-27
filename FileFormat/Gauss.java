@@ -41,10 +41,11 @@ public class Gauss {
 		System.out.println("test1");
 		int n = M.size();
 		int j = i;
-		for (int k = i + 1; k < n; k++) {
-			if (Math.abs(M.get(k).get(i)) > Math.abs(M.get(j).get(i))) {
+		for (int k = i+1; k < n+1; k++) {
+			if (Math.abs(M.get(k).get(i)) > Math.abs(M.get(j).get(i))) {//-1
 				j = k;
-			} // if abs(M[k,i])>abs(M[j,i])
+			}
+			System.out.println("i (=j) : "+i+" , k : "+k+" , M.get(k).size() : "+M.size()+" , M.get(j).size() : "+M.size()+" , M..get(k).get(i).size() : "+M.get(k).get(i)+" , M..get(j).get(i).size() : "+M.get(j).get(i));
 		}
 		System.out.println("test2");
 		return j;
