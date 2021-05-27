@@ -4,7 +4,7 @@ import javax.swing.* ;
 import java.awt.* ;
 import java.awt.event.* ;
 
-class FenetreNoeud extends JDialog implements ActionListener{   //JDialog, comme JFrame mais peut etre executé en modal
+class FenetreNoeud extends JDialog implements ActionListener{               //JDialog, comme JFrame mais peut etre executé en modal
     private static final long serialVersionUID = 1L;
 
     private JButton add, close;
@@ -15,7 +15,7 @@ class FenetreNoeud extends JDialog implements ActionListener{   //JDialog, comme
     private String newajout = "";
 
     public FenetreNoeud(java.awt.Frame parent){
-        super(parent, true);                                    //permet d'ouvrir le jDialog en modal, ie pause la FenetreMain pdt l'execution de la FenetreNoeud
+        super(parent, true);                                                //permet d'ouvrir le jDialog en modal, ie pause la FenetreMain pdt l'execution de la FenetreNoeud
         setTitle("Ajout de noeud");
         setSize(500,300);
         

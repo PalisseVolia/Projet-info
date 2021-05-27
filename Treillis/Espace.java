@@ -1,25 +1,30 @@
 package Treillis;
+// ============ CLASSE Barre =============
+//
+//Création de l'espace constructible du terrain, définis par une abscisse max, une ordonnée max, abscisse min et une ordonnée min
+//
+// =======================================
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class Espace {
-    private double xmax;
-    private double xmin;
-    private double ymax;
-    private double ymin;
+    private double xmax; // abscisse max
+    private double xmin; // abscisse min
+    private double ymax; // ordonnée max
+    private double ymin; // ordonnée min
 
-    public Espace() {
+    public Espace() {                                                               // constructeur principal
         try {
-            BufferedReader data = new BufferedReader(new FileReader("Data.txt"));
+            BufferedReader data = new BufferedReader(new FileReader("Data.txt"));   // récupération du fichier texte contenant les données
             String line;
             String[] mot;
             Boolean ok = false;
-            while (((line = data.readLine()) != null) && (ok != true)) {
-                mot = line.split(";");
+            while (((line = data.readLine()) != null) && (ok != true)) {            // pour chaque ligne
+                mot = line.split(";");                                              // sépare la ligne en différents Strings
                 if (mot[0].equals("ZoneConstructible")) {
-                    this.xmax = Double.parseDouble(mot[1]);
+                    this.xmax = Double.parseDouble(mot[1]);                         // donne les bonnes valeurs aux arguments
                     this.xmin = Double.parseDouble(mot[2]);
                     this.ymax = Double.parseDouble(mot[3]);
                     this.ymin = Double.parseDouble(mot[4]);
@@ -38,46 +43,31 @@ public class Espace {
         }
     }
 
-    public Espace(String line) {
+    public Espace(String line) {                                                    // constructeur permettant de récupérer les données depuis un string
         String[] mot;
         mot = line.split(";");
         if (mot[0].equals("ZoneConstructible")) {
-            this.xmax = Double.parseDouble(mot[1]);
+            this.xmax = Double.parseDouble(mot[1]);                                 // donne les bonnes valeurs aux arguments
             this.xmin = Double.parseDouble(mot[2]);
             this.ymax = Double.parseDouble(mot[3]);
             this.ymin = Double.parseDouble(mot[4]);
         }
     }
 
+    // méthodes get
     public double getXmax() {
         return xmax;
-    }
-
-    public void setXmax(double xmax) {
-        this.xmax = xmax;
     }
 
     public double getXmin() {
         return xmin;
     }
 
-    public void setXmin(double xmin) {
-        this.xmin = xmin;
-    }
-
     public double getYmax() {
         return ymax;
     }
 
-    public void setYmax(double ymax) {
-        this.ymax = ymax;
-    }
-
     public double getYmin() {
         return ymin;
-    }
-
-    public void setYmin(double ymin) {
-        this.ymin = ymin;
     }
 }

@@ -1,10 +1,15 @@
 package Interface;
+// ========== CLASSE FenetreEspace ===========
+//
+// ouvre la fenetre permettant la création de l'espace de construction
+//
+// ===========================================
 
 import javax.swing.* ;
 import java.awt.* ;
 import java.awt.event.* ;
 
-public class FenetreEspace extends JDialog implements ActionListener{
+public class FenetreEspace extends JDialog implements ActionListener{       //JDialog, comme JFrame mais peut etre executé en modal
     
     private JButton confirm;
     private JTextField xmax, xmin, ymax, ymin, errors;
@@ -13,10 +18,11 @@ public class FenetreEspace extends JDialog implements ActionListener{
     private String newajout = "";
 
     public FenetreEspace(java.awt.Frame parent) {
-        super(parent, true);
+        super(parent, true);                                                //permet d'ouvrir le jDialog en modal, ie pause la FenetreMain pdt l'execution
         setTitle("Espace de construction");
         setSize(410,180);
 
+        //création des différents éléments graphiques de la fenetre
         txt = new Dimension(75,24);
 
         JPanel pane1 = new JPanel();
@@ -81,24 +87,23 @@ public class FenetreEspace extends JDialog implements ActionListener{
         contenu.add(pane6, BorderLayout.SOUTH);
     }
 
-    public String getNewajout() {
+    public String getNewajout() {                                   // méthode get de la liste de triangles créés
         return newajout;
     }
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == confirm) {
+        if (e.getSource() == confirm) {                             // si on appuie sur confirmer
             boolean doerror = false;
-            try {
+            try {                                                   // on vérifie que les abscisses/ordonénes sont des réels
                 Double test = Double.parseDouble(xmax.getText()) + Double.parseDouble(xmin.getText()) + Double.parseDouble(ymax.getText()) + Double.parseDouble(ymin.getText());
                 test = test + test;
-                
             } catch (Exception err) {
                 errors.setText("                      error : l'une des coordonnées n'est pas un réel");
                 doerror = true;
             }
-            if (doerror == false) {
+            if (doerror == false) {                                 // si il n'y a aps d'erreur on met a jour le string sortie et le Jtextarea et on vide les donnée entrées précedemment
                 newajout = "ZoneConstructible;" + xmax.getText() + ";" + xmin.getText() + ";" + ymax.getText() + ";" + ymin.getText();
-                dispose();
+                dispose();                                          // on ferme la fenetre
             }
         }
     }
