@@ -1,10 +1,9 @@
 package Terrain;
 // ========== CLASSE LTriangle ===========
 //
-// Récupère les valeurs des triangles dans le fichier de donnée et les transforme en triangles placés dans un tableau
+// Création d'une liste de tous les triangles du treillis depuis le fichier de données
 //
 // =======================================
-
 
 import java.io.BufferedReader;
 import java.io.FileReader;

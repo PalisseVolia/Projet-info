@@ -1,10 +1,9 @@
 package Treillis;
 // =========== CLASSE LNoeud ============
 //
-// Récupère les valeurs des noeuds dans le fichier de donnée et les transforme en noeuds placés dans un tableau
+// Création d'une liste de tous les noeuds du treillis depuis le fichier de données
 //
 // ======================================
-
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -31,7 +30,7 @@ public class LNoeud {
                     mot = line.split(";");
                     mot[2] = mot[2].replace("(","").replace(")", "");
                     coord = mot[2].split(",");
-                    lNoeuds[k] = new Noeud(Double.parseDouble(coord[0]), Double.parseDouble(coord[1]), mot[1], 3, 0, 0); //remplis un tableau avec les noeuds du treillis
+                    lNoeuds[k] = new Noeud(Double.parseDouble(coord[0]), Double.parseDouble(coord[1]), mot[1], 3, 0, 0);        //remplis un tableau avec les noeuds du treillis
                     
                     // TEST PEUT TRES MAL TOURNER OSKOUR
                     if (mot[0].equals("AppuiSimple")) {
@@ -125,13 +124,10 @@ public class LNoeud {
         }
     }
 
-    public Noeud getListeNoeuds(int i) {                                                                                        //méthode get d'un des noeuds du tableau
+    public Noeud getListeNoeuds(int i) {                                                                                        //méthode get du i-ème noeud du tableau
         return this.listenoeuds[i];
     }
     public int getlisteNoeuds() {                                                                                               //méthode get du nombre de noeuds du tableau
         return this.nbnoeuds;
-    }
-    public void setAppui(int i, int appui) {
-        this.listenoeuds[i].setTypeSupport(appui);
     }
 }

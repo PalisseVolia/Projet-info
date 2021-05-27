@@ -1,7 +1,11 @@
 package Interface;
+// ========== CLASSE FenetreAppui ===========
+//
+// ouvre la fenetre permettant la détermination du type d'appui
+//
+// ==========================================
 
 import javax.swing.JDialog;
-
 import Treillis.LNoeud;
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +16,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 
-public class FenetreAppui extends JDialog implements ActionListener {
+public class FenetreAppui extends JDialog implements ActionListener {           //JDialog, comme JFrame mais peut etre executé en modal
 
     private JButton valider;
     private JTextField identification;
@@ -21,10 +25,11 @@ public class FenetreAppui extends JDialog implements ActionListener {
     int i = 0;
 
     public FenetreAppui(java.awt.Frame parent) {
-        super(parent, true);
+        super(parent, true);                                                    //permet d'ouvrir le jDialog en modal, ie pause la FenetreMain pdt l'execution
         setTitle("Détermination du type d'appui");
         setSize(500, 140);
 
+        //création des différents éléments graphiques de la fenetre
         JPanel pane1 = new JPanel();
         pane1.setLayout(new FlowLayout());
         identification = new JTextField();
@@ -55,42 +60,40 @@ public class FenetreAppui extends JDialog implements ActionListener {
         try {
             if (e.getSource() == valider) {
                 if (i <= lnoeud.getlisteNoeuds() - 1) {
-                    if (asimple.isSelected() == true) {
+                    if (asimple.isSelected() == true) {                                                 // si la case "simple" est sélectionnée met le type du noeud a 1 <=> simple
                         lnoeud.getListeNoeuds(i).setTypeSupport(1);
-                        System.out.println(lnoeud.getListeNoeuds(i).getTypeSupport());
                     }
                     if (adouble.isSelected() == true) {
                         lnoeud.getListeNoeuds(i).setTypeSupport(2);
-                        System.out.println(lnoeud.getListeNoeuds(i).getTypeSupport());
                     }
-                    if (i < lnoeud.getlisteNoeuds()) {
+                    if (i < lnoeud.getlisteNoeuds()) {                                                  // si la case "double" est sélectionnée met le type du noeud a 2 <=> double
                         while (lnoeud.getListeNoeuds(i).getTypeSupport() != 4) {
                             i = i + 1;
-                            identification.setText(lnoeud.getListeNoeuds(i).getIdentificationN());
+                            identification.setText(lnoeud.getListeNoeuds(i).getIdentificationN());      // actualise l'identifiant du noeud dans le jtextfield au premier noud d'appui indéterminé (4)
                         }
                     }
                 } else {
-                    Appui();
-                    dispose();
+                    Appui();                                                                            // Actualise le fichier de données (voir classe "Actualisenoeud")
+                    dispose();                                                                          // ferme la fenetre
                 }
             }
-        } catch (Exception err) {
-            Appui();
-            dispose();
+        } catch (Exception err) {                                                                       // en cas d'erreur
+            Appui();                                                                                    // Actualise le fichier de données (voir classe "Actualisenoeud")
+            dispose();                                                                                  // ferme la fenetre
         }
-        if (e.getSource() == asimple) {
+        if (e.getSource() == asimple) {                                                                 // si la case simple est cochée, décoche la case double
             if (asimple.isSelected() == true) {
                 adouble.setSelected(false);
             }
         }
-        if (e.getSource() == adouble) {
+        if (e.getSource() == adouble) {                                                                 // si la case double est cochée, décoche la case simple
             if (adouble.isSelected() == true) {
                 asimple.setSelected(false);
             }
         }
     }
 
-    public void Appui() {
+    public void Appui() {                                                                               //voir classe Actualisenoeud (copie)
         try {
             BufferedReader noeudr = new BufferedReader(new FileReader("Data.txt"));
             String line;

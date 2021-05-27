@@ -1,10 +1,15 @@
 package Interface;
+// ========== CLASSE FenetreNoeud ===========
+//
+// ouvre la fenetre permettant la création de noeuds
+//
+// =============================================
 
 import javax.swing.* ;
 import java.awt.* ;
 import java.awt.event.* ;
 
-class FenetreNoeud extends JDialog implements ActionListener{   //JDialog, comme JFrame mais peut etre executé en modal
+class FenetreNoeud extends JDialog implements ActionListener{               //JDialog, comme JFrame mais peut etre executé en modal
     private static final long serialVersionUID = 1L;
 
     private JButton add, close;
@@ -15,10 +20,11 @@ class FenetreNoeud extends JDialog implements ActionListener{   //JDialog, comme
     private String newajout = "";
 
     public FenetreNoeud(java.awt.Frame parent){
-        super(parent, true);                                    //permet d'ouvrir le jDialog en modal, ie pause la FenetreMain pdt l'execution de la FenetreNoeud
+        super(parent, true);                                                //permet d'ouvrir le jDialog en modal, ie pause la FenetreMain pdt l'execution de la FenetreNoeud
         setTitle("Ajout de noeud");
         setSize(500,300);
         
+        //création des différents éléments graphiques de la fenetre
         txt = new Dimension(75,24);
         noeuds = new JTextArea("");
         noeuds.setEditable(false);
@@ -76,14 +82,14 @@ class FenetreNoeud extends JDialog implements ActionListener{   //JDialog, comme
         contenu.add(pane6, BorderLayout.SOUTH);
     }
 
-    public String getNewajout() {
+    public String getNewajout() {                       // méthode get de la liste de noeuds créés
         return newajout;
     }
     
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == add) {
+        if (e.getSource() == add) {                     // si on appuie sur add
             boolean doerror = false;
-            try {
+            try {                                       // on vérifie que les abscisses/ordonnées sont des réels
                 Double test = Double.parseDouble(abscisse.getText()) + Double.parseDouble(ordonnee.getText());
                 test = test + test;
             } catch (Exception err) {
@@ -91,12 +97,12 @@ class FenetreNoeud extends JDialog implements ActionListener{   //JDialog, comme
                 noeuds.setText(newajout);
                 doerror = true;
             }
-            if (identification.getText().equals("")) {
+            if (identification.getText().equals("")) {  // on vérifie qu'on a bien entré un identifiant
                 newajout = newajout + "error : veuillez entrer un identifiant de noeud"  + "\n";
                 noeuds.setText(newajout);
                 doerror = true;
             }
-            if (doerror == false) {
+            if (doerror == false) {                     // si il n'y a aps d'erreur on met a jour le string sortie et le Jtextarea et on vide les donnée entrées précedemment
                 newajout = newajout + "Type" + ";" + identification.getText() + ";(" + abscisse.getText() + "," + ordonnee.getText() + ")" + "\n";
                 abscisse.setText("");
                 ordonnee.setText("");
@@ -104,7 +110,7 @@ class FenetreNoeud extends JDialog implements ActionListener{   //JDialog, comme
                 noeuds.setText(newajout);
             }
         }
-        if (e.getSource() == close) {
+        if (e.getSource() == close) {                   //si on appuie sur close on ferme la fenetre
             dispose();
         }
     }
