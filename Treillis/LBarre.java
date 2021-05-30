@@ -10,7 +10,9 @@ import java.io.FileReader;
 
 public class LBarre {
     private Barre[] listebarres;                                                                // tableau des barres
-    private int nbbarres;                                                                       // nombre total de barres
+    private int nbbarres; // nombre total de barres
+
+    public LNoeud lnoeud = new LNoeud();
 
     public LBarre() {
         try {
@@ -33,16 +35,18 @@ public class LBarre {
                     }
                     if (mot[1].equals("EnI")) {                                                 // si la barre est En I elle prends le type 2
                         type = 2;
-                    }
-                    LNoeud lnoeud = new LNoeud();                                               // on récupère la lsite des noeuds
+                    }                                                                           // on récupère la liste des noeuds
                     for (int i = 0; i < lnoeud.getlisteNoeuds(); i++) {                         //pour chaque noeud on les assigne au noeud de début ou de fin de la barre si leurs identifiants correspondent
+                        //System.out.println("barre: "+mot[0]+", noeud: "+lnoeud.getListeNoeuds(i).getIdentificationN()+", n1 barre: "+mot[2]+", n2 barre: "+mot[3]);
                         if (lnoeud.getListeNoeuds(i).getIdentificationN().equals(mot[2])) {
                             noeud1 = lnoeud.getListeNoeuds(i);
                             noeud1.addTabbar(mot[0]);
+                            //System.out.println(noeud1.getTabbar());
                         }
                         if (lnoeud.getListeNoeuds(i).getIdentificationN().equals(mot[3])) {
                             noeud2 = lnoeud.getListeNoeuds(i);
                             noeud2.addTabbar(mot[0]);
+                            //System.out.println(noeud2.getTabbar());
                         }
                     }
                     lBarre[k] = new Barre(noeud1, noeud2, mot[0], type);                        // on ajoute la barre dont on a déterminé les arguments au tableau de barres

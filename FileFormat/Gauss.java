@@ -10,25 +10,11 @@ public class Gauss { // permet d'inverser une matrice
 	public ArrayList<ArrayList<Double>> M; //matrice 
 	public LBarre lBarre = new LBarre();
 	public LTriangle lTriangle = new LTriangle();
+	public LNoeud lnoeud = lBarre.lnoeud;
 
 	public Gauss() {
 		M = new ArrayList<ArrayList<Double>>(); // crée la matrice M 
 	}
-
-	/*public ArrayList<ArrayList<Double>> augmente(ArrayList<ArrayList<Double>> A, ArrayList<ArrayList<Double>> B) { 
-		ArrayList<ArrayList<Double>> res = new ArrayList<ArrayList<Double>>();
-		for (int i = 0; i < A.size(); i++) { 
-			res.add(new ArrayList<Double>());
-			for (int j = 0; j < A.get(i).size(); j++) {
-				res.get(i).add(A.get(i).get(j));
-			}
-			for (int k = 0; k < B.get(i).size(); k++) {
-				res.get(i).add(B.get(i).get(k));
-			}
-		}
-		M = res;
-		return res;
-	}*/
 
 	public ArrayList<ArrayList<Double>> echLigne(int i, int j) { // permet d'échanger deux lignes 
 		ArrayList<Double> temp = M.get(i); // ligne tampon 
@@ -38,43 +24,44 @@ public class Gauss { // permet d'inverser une matrice
 	}
 
 	public int pivot(int i) { // cherche le plus grand pivot 
-		System.out.println("test1");
-		int n = M.size();
-		int j = i;
-		for (int k = i+1; k < n; k++) {
-			if (Math.abs(M.get(k).get(i)) > Math.abs(M.get(j).get(i))) {//-1
-				j = k;
+		int n = M.size(); //soit n le nombre de ligne
+		int j = i; 
+		for (int k = i+1; k < n; k++) { // pour toutes les colonnes 
+			if(i<M.get(k).size()&&i<M.get(j).size()){
+				if (Math.abs(M.get(k).get(i)) > Math.abs(M.get(j).get(i))) { // si la valeur lu est plus grande que précedemment 
+					j = k;
+				}
 			}
-			System.out.println("i (=j) : "+i+" , k : "+k+" , M.get(k).size() : "+M.size()+" , M.get(j).size() : "+M.size()+" , M..get(k).get(i).size() : "+M.size()+" , M..get(j).get(i).size() : "+M.get(j).get(i));
-			System.out.println("test2");
 		}
-		System.out.println("test3");
-		return j;
+		return j; // plus grand pivot 
 	}
 
 	public ArrayList<ArrayList<Double>> elimine(int i, int j) { // effectue les opérations nécessaires pour elinminer les coeffs devant autres que pivot 
-		double a = -M.get(j).get(i) / M.get(i).get(i);
-		for (int k = 0; k < M.get(j).size(); k++) {
-			M.get(j).set(k, M.get(j).get(k) + M.get(i).get(k) * a);
-		} // M[j]+=a*M[i]
-		return M;
+		if(i<M.get(j).size()&&i<M.get(i).size()){
+			double a = -M.get(j).get(i) / M.get(i).get(i); //
+			for (int k = 0; k < M.get(j).size(); k++) { // pour tout les coefficients 
+			M.get(j).set(k, M.get(j).get(k) + M.get(i).get(k) * a); // soustrait le coeff de la case pour optenir un 0
+			}
+		}
+		return M; // matrice diagonale
 	}
 
 	public ArrayList<ArrayList<Double>> normaliseDiagonale() { //change les pivots en 1
-		for (int i = 0; i < M.size(); i++) {
-			double temp = M.get(i).get(i);
-			for (int j = 0; j < M.get(i).size(); j++) {
-				M.get(i).set(j, M.get(i).get(j) / temp);
+		for (int i = 0; i < M.size(); i++) { // pour toute la matrice
+			if(i<M.get(i).size()){
+				double temp = M.get(i).get(i); // coeff de la case
+				for (int j = 0; j < M.get(i).size(); j++) {
+				M.get(i).set(j, M.get(i).get(j) / temp); // divise par lui même donc 1
+				}
 			}
 		}
-		return M;
+		return M; 
 	}
 
 	public ArrayList<ArrayList<Double>> pGauss(ArrayList<ArrayList<Double>> A) {
-		//M = augmente(A,B);//On crée la matrice augmentée de M
 		this.M = A;
 		int n = M.size();
-		for (int i = 0; i < n - 1; i++) {// On parcours chaque ligne de la matrice M
+		for (int i = 0; i < n-1; i++) {// On parcours chaque ligne de la matrice M
 			int p = pivot(i);// On cherche le plus grand pivot
 			if (i != p) {
 				echLigne(i, p);// échange la première ligne par la ligne qui contient le plus grand pivot
@@ -83,57 +70,56 @@ public class Gauss { // permet d'inverser une matrice
 				elimine(i, j);// Elimine tout les coefficients en dessous des pivots
 			}
 		}
-		System.out.println("test3");
 		normaliseDiagonale();// Met les pivots en 1
 		for (int i = n - 1; i > 0; i--) {
 			for (int j = i - 1; j >= 0; j--) {
-				elimine(i, j);// élimine les coefficient au dessus des pivots
+				elimine(i, j);// élimine les coefficients au dessus des pivots
 			}
 		}
-		System.out.println("test4");
 		return M;
 	}
 
-	public static ArrayList<ArrayList<Double>> remplitmatrice(LNoeud list, LBarre lBarre) {// méthode pour remplir la matrice 
+	public static ArrayList<ArrayList<Double>> remplitmatrice(LBarre lBarre) {// méthode pour remplir la matrice 
 		ArrayList<String> col = new ArrayList<String>(); 
-		ArrayList<ArrayList<Double>> Mat = new ArrayList<ArrayList<Double>>(); // Matrice
+		LNoeud list= lBarre.lnoeud;
+		ArrayList<ArrayList<Double>> M = new ArrayList<ArrayList<Double>>(); // Matrice
 		for (int i = 0; i < list.getlisteNoeuds(); i++) { //pour chaque noeud de la liste des noeuds
-			Noeud n = list.getListeNoeuds(i);
-			for (int j = 0; j < n.getTabbar().size(); j++) { 
+			Noeud n = list.getListeNoeuds(i); // on appelle n le noeud 
+			for (int j = 0; j < n.getTabbar().size(); j++) { // pour toutes les barres
 				if (!col.contains(n.getTabbar().get(j))) { // si la liste col ne contient pas la barre alors on l'ajoute 
 					col.add(n.getTabbar().get(j));
 				}
 			}
-			if (n.getTypeSupport() == 1) { //
+			if (n.getTypeSupport() == 1) { //si appui simple 
 				col.add("R" + n.getIdentificationN());
 			}
-			if (n.getTypeSupport() == 2) {
+			if (n.getTypeSupport() == 2) { // si appui double
 				col.add("Rx" + n.getIdentificationN());
 				col.add("Ry" + n.getIdentificationN());
 			}
 		}
+		System.out.println(col+"\n");
 		double x2 = 0.0;
 		double y2 = 0.0;
 		double x1 = 0.0;
 		double y1 = 0.0;
-		for (int i = 0; i < list.getlisteNoeuds(); i++) { //chaque noeud de la liste 
+		for (int i = 0; i < list.getlisteNoeuds(); i++) { // pour chaque noeud de la liste 
 			Noeud n = list.getListeNoeuds(i);
 			ArrayList<Double> Ligne1 = new ArrayList<Double>(); // création d'une nouvelle ligne 
 			ArrayList<Double> Ligne2 = new ArrayList<Double>(); // de même
-			for (int a = 0; a < col.size(); a++) { //
+			for (int a = 0; a < col.size(); a++) { // on remplit au depart la matrice par des 0
 				Ligne1.add(0.0);
 				Ligne2.add(0.0);
 			}
 			if (n.getTypeSupport() == 1) { // si appui simple
-				for (int j = 0; j < n.getTabbar().size(); j++) { //
-					for (int a = 0; a < col.size(); a++) {
-						if (n.getTabbar().get(j) == col.get(a)) {
+				for (int j = 0; j < n.getTabbar().size(); j++) { // pour toutes les barres du noeud
+					for (int a = 0; a < col.size(); a++) { // pour la taille de la colonne 
+						if (n.getTabbar().get(j) == col.get(a)) { // si la barre correspond a la colonne 
 							x1 = n.getabscisse();
 							y1 = n.getordonnee();
-							for (int k = 0; k < lBarre.getListeBarres(); k++) {
-								if (lBarre.getlisteBarre(k).getIdentificationB() == n.getTabbar().get(j)) {
-									if (n.getIdentificationN() == lBarre.getlisteBarre(k).getDebut_noeud()
-											.getIdentificationN()) {
+							for (int k = 0; k < lBarre.getListeBarres(); k++) { // pour le nombre de barre 
+								if (lBarre.getlisteBarre(k).getIdentificationB() == n.getTabbar().get(j)) { // si la barre étudiée
+									if (n.getIdentificationN() == lBarre.getlisteBarre(k).getDebut_noeud().getIdentificationN()) { // si le noeud correspond au debut de la barre
 										x2 = lBarre.getlisteBarre(k).getFin_noeud().getabscisse();
 										y2 = lBarre.getlisteBarre(k).getFin_noeud().getordonnee();
 									} else {
@@ -142,10 +128,14 @@ public class Gauss { // permet d'inverser une matrice
 									}
 								}
 							}
-							Ligne1.set(a, Math.cos(trouve_angle(x2, x1, 1000.0, y2, y1, y1))); //on calcule le cos entre la barre et l'horrizontale
+							System.out.println("x1: "+x1+", x2:"+x2+", y1: "+y1+", y2: "+y2);
+							double angle = trouve_angle(x2, x1, 1000.0, y2, y1, y1); // on calcule l'angle entre l'horizontale et la barre 
+							System.out.println(angle);
+							Ligne1.set(a, Math.cos(angle));
+							System.out.println(Ligne1);
 							Ligne2.set(a, Math.sin(trouve_angle(x2, x1, 1000.0, y2, y1, y1))); //on calcule le sin entre la barre et l'horrizontale
 						}
-						if (("R" + n.getIdentificationN()) == col.get(a)) {
+						if (("R" + n.getIdentificationN()) == col.get(a)) { // si le nom correspond à la colone
 							LTriangle lTriangle = new LTriangle();
 							Triangle t = lTriangle.getListeTriangles(n.gettriangleappui());
 							if (n.gettrianglecote() == 1) { // si le noeud est sur le côté 1
@@ -182,7 +172,6 @@ public class Gauss { // permet d'inverser une matrice
 						if (n.getTabbar().get(j) == col.get(a)) {
 							x1 = n.getabscisse();
 							y1 = n.getordonnee();
-
 							for (int k = 0; k < lBarre.getListeBarres(); k++) {
 								if (lBarre.getlisteBarre(k).getIdentificationB() == n.getTabbar().get(j)) {
 									if (n.getIdentificationN() == lBarre.getlisteBarre(k).getDebut_noeud()
@@ -237,18 +226,12 @@ public class Gauss { // permet d'inverser une matrice
 				}
 
 			}
-			Mat.add(Ligne1);
-			Mat.add(Ligne2);
+			M.add(Ligne1);
+			M.add(Ligne2);
 		}
-		return Mat;
+		System.out.println(M);
+		return M;
 
-	}
-
-	public static double trouve_angle(double x1, double x2, double x3, double y1, double y2, double y3) { // méthode qui permet de trouver l'angle 
-		double p0c = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)); // distance entre le noeud 1 et 2
-		double p1c = Math.sqrt(Math.pow(x2 - x3, 2) + Math.pow(y2 - x3, 2)); // distance entre le noeud 3 et 2
-		double p0p1 = Math.sqrt(Math.pow(x3 - x1, 2) + Math.pow(y3 - y1, 2)); // distance entre le noeud 1 et 3
-		return Math.acos((p1c * p1c + p0c * p0c - p0p1 * p0p1) / (2 * p1c * p0c)); // relation trigo pour trouver l'angle
 	}
 
 	public static double trouve_beta(double PTx1, double PTx2, double PTy1, double PTy2) { // permet de trouver l'angle que fait le vecteur normal au segment du terrain
@@ -256,36 +239,15 @@ public class Gauss { // permet d'inverser une matrice
 		return beta;
 	}
 
-	// public static double[] trouve_alpha(double x1,double x2, double x3, double
-	// y1, double y2, double y3) {
-	// double[] res = new double[6];
-
-	// double alpha12 = trouve_angle(x2,x1,1000,y2,y1,y1);
-	// res[0]=alpha12;
-
-	// double alpha13 = trouve_angle(x3,x1,1000,y3,y1,y1);
-	// res[1]=alpha13;
-
-	// double alpha21 = Math.PI-alpha12;
-	// res[2]=alpha21;
-
-	// double alpha23 = trouve_angle(x3,x2,1000,y3,y2,y2);
-	// res[3]=alpha23;
-
-	// double alpha31 = Math.PI-alpha13;
-	// res[4]=alpha31;
-
-	// double alpha32 = Math.PI-alpha23;
-	// res[5]=alpha32;
-
-	// return res;
-	// }
+	public static double trouve_angle(double x1, double x2, double x3, double y1, double y2, double y3) {
+		double result = Math.atan2(y3 - y1, x3 - x1) - Math.atan2(y2 - y1, x2 - x1);
+		return result;
+	}
 
 	public void gaussfin() { // execute le pivot de Gauss 
 		Gauss res = new Gauss();
-		LNoeud lnoeud = new LNoeud();
 		LBarre lBarre = new LBarre();
-		ArrayList<ArrayList<Double>> A = remplitmatrice(lnoeud, lBarre);
+		ArrayList<ArrayList<Double>> A = remplitmatrice(lBarre);
 		ArrayList<ArrayList<Double>> result = res.pGauss(A);
 		// résultat à récupérer
 		System.out.println(result);// pour le voir
